@@ -95,8 +95,25 @@ functionGroups.forEach((fn: string[]) => {
                     .slice(3)
                     .join(' ')}`
         )
-        .join('\n')}`;
-    if (generic) functionStr = functionStr.replaceAll(': T', `: ${generic}`);
+        .join('\n')}\n### Returns:\n${
+        fn
+            .filter((line) => line.includes('@return'))
+            .map(
+                (param) =>
+                    `- \`${param.split(' ')[1]}${
+                        param.split(' ')[3] === 'nil' ? '?' : ''
+                    }\` - ${
+                        param.split(' ')[3] === 'nil'
+                            ? param.split(' ').slice(5).join(' ')
+                            : param.split(' ').slice(3).join(' ')
+                    }`
+            )
+            .join('\n') || '- `nil`'
+    }\n`;
+    if (generic)
+        functionStr = functionStr
+            .replaceAll(': T', `: ${generic}`)
+            .replaceAll('`T`', `\`${generic}\``);
     dict[global].push(functionStr);
 });
 
