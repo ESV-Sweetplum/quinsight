@@ -90,9 +90,10 @@ functionGroups.forEach((fn: string[]) => {
         .filter((line) => line.includes('@param'))
         .map(
             (param) =>
-                `#####    - \`${param.split(' ')[1]}: ${
-                    param.split(' ')[2]
-                }\` - ${param.split(' ').slice(3).join(' ')}`
+                `- \`${param.split(' ')[1]}: ${param.split(' ')[2]}\` - ${param
+                    .split(' ')
+                    .slice(3)
+                    .join(' ')}`
         )
         .join('\n')}`;
 });
@@ -100,7 +101,9 @@ functionGroups.forEach((fn: string[]) => {
 outputStr = `${outputStr}\n\n`;
 
 Object.entries(dict).forEach(([global, obj]) => {
-    outputStr = `${outputStr}# ${global}\n${Object.values(obj).join('\n\n')}`;
+    outputStr = `${outputStr}# global ${global}\n${Object.values(obj).join(
+        '\n\n'
+    )}`;
 });
 
 outputStr = `${outputStr}\n\n${JSON.stringify(dict)}`;
