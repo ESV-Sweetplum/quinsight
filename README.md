@@ -1,4 +1,4 @@
-# quinsight 2.0
+# զuinsight 2.0
 
 When making a plugin for the rhythm game [Quaver](https://github.com/Quaver/Quaver), many globals go unnoticed or unused, with no autocomplete for editor interaction or imgui structuring. The purpose of quinsight, built by myself and [Emik](https://github.com/Emik03), is to provide plugin developers with well-documented intellisense and properly-labeled classes.
 
