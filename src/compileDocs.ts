@@ -97,7 +97,7 @@ functionGroups.forEach((fn: string[]) => {
                     .join(' ')}`
         )
         .join('\n')}`;
-    if (generic) functionStr = functionStr.replaceAll(': T', generic);
+    if (generic) functionStr = functionStr.replaceAll(': T', `: ${generic}`);
     dict[global][method] = functionStr;
 });
 
