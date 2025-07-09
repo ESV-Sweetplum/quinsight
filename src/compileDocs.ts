@@ -75,7 +75,10 @@ functionGroups.forEach((fn: string[]) => {
     const global = functionName.split('.')[0];
     const method = functionName.split('.')[1];
     let functionDesc = '';
+    let generic = '';
     fn.forEach((line) => {
+        if (line.includes('---@generic T : '))
+            generic = line.split('---@generic T : ')[1];
         if (!line.startsWith('--- #')) return;
         functionDesc = `${functionDesc}${line.replaceAll(
             /(--- |#)/g,
@@ -84,9 +87,7 @@ functionGroups.forEach((fn: string[]) => {
     });
     const displayName = lastLine.split(' end')[0];
 
-    dict[global][
-        method
-    ] = `## \`${displayName}\`\n${functionDesc}\n### Parameters:\n${fn
+    let functionStr = `## \`${displayName}\`\n${functionDesc}\n### Parameters:\n${fn
         .filter((line) => line.includes('@param'))
         .map(
             (param) =>
@@ -96,6 +97,8 @@ functionGroups.forEach((fn: string[]) => {
                     .join(' ')}`
         )
         .join('\n')}`;
+    if (generic) functionStr = functionStr.replaceAll(': T', generic);
+    dict[global][method] = functionStr;
 });
 
 outputStr = `${outputStr}\n\n`;
@@ -105,7 +108,5 @@ Object.entries(dict).forEach(([global, obj]) => {
         '\n\n'
     )}`;
 });
-
-outputStr = `${outputStr}\n\n${JSON.stringify(dict)}`;
 
 fs.writeFileSync('DOCS.md', outputStr);
