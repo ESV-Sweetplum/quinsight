@@ -1,0 +1,12 @@
+{
+  "name": "quinsight",
+  "version": "1.0.0",
+  "description": "Intellisense file and documentation for plugin development in Quaver.",
+  "main": "dist/compileDocs.js",
+  "scripts": {
+    "compile": "tsc && node ."
+  },
+  "keywords": ["Quaver", "Intellisense", "Lua", "Plugins"],
+  "author": "ESV-Sweetplum",
+  "license": "MIT"
+}
