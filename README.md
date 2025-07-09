@@ -16,3 +16,5 @@ Either use this repository as a submodule, or simply clone the `intellisense.lua
 ## Special Thanks To:
 - [Emik](https://github.com/Emik03), for support with imgui functions and documentation.
 - [IceDynamix](https://github.com/IceDynamix), for creating the original version of intellisense that this was based off of, [QuaverPluginIntellisense](https://github.com/IceDynamix/QuaverPluginIntellisense).
+
+<sup>it's pronounced quin-sight. two meanings: 1) quinsight = quaver insight, 2) quin = 5, and the 5 things to sight are hitobjects, timing lines, scroll velocities, scroll speed factors, and scroll groups.</sup>
