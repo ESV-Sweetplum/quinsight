@@ -1,4 +1,4 @@
-# class ScrollGroup
+# class `ScrollGroup`
 
 ### `[ScrollGroup].InitialScrollVelocity: number`
  (READ-ONLY) The initial [sv](lua://ScrollVelocity) multiplier of this [scroll group](lua://ScrollGroup).
@@ -15,28 +15,28 @@
 ### `[ScrollGroup].Hidden: boolean`
  (READ-ONLY) Determines whether or not the timing group color is visible in the editor.
 
-# class ScrollSpeedFactor
+# class `ScrollSpeedFactor`
 
 ### `[ScrollSpeedFactor].StartTime: number`
  (READ-ONLY) The time at which the [scroll speed factor](lua://ScrollSpeedFactor) takes effect.
 ### `[ScrollSpeedFactor].Multiplier: number`
  (READ-ONLY) The factor at which to multiply the player's scroll speed.
 
-# class ScrollVelocity
+# class `ScrollVelocity`
 
 ### `[ScrollVelocity].StartTime: number`
  (READ-ONLY) The time at which the [scroll velocity](lua://ScrollVelocity) takes effect.
 ### `[ScrollVelocity].Multiplier: number`
  (READ-ONLY) The factor at which to multiply the player's [scroll velocity](lua://ScrollVelocity).
 
-# class Bookmark
+# class `Bookmark`
 
 ### `[Bookmark].StartTime: integer`
  (READ-ONLY) The time the [bookmark](lua://Bookmark) is attached to.
 ### `[Bookmark].Note: string`
  (READ-ONLY) The contents of the [bookmark](lua://Bookmark).
 
-# class HitObject
+# class `HitObject`
 
 ### `[HitObject].StartTime: integer`
  (READ-ONLY) The time the note is present.
@@ -53,7 +53,7 @@
 ### `[HitObject].TimingGroup: string`
  (READ-ONLY) The id of the [timing group](lua://ScrollGroup) that this note belongs to.
 
-# class TimingPoint
+# class `TimingPoint`
 
 ### `[TimingPoint].StartTime: number`
  (READ-ONLY) The time in which the [timing point](lua://TimingPoint) is located.
@@ -64,7 +64,7 @@
 ### `[TimingPoint].Hidden: boolean`
  (READ-ONLY) Determines whether or not the timing lines are rendered.
 
-# class EditorLayer
+# class `EditorLayer`
 
 ### `[EditorLayer].Name: string`
  (READ-ONLY) The name of the [editor layer](lua://EditorLayer).
@@ -73,25 +73,25 @@
 ### `[EditorLayer].ColorRgb: string`
  (READ-ONLY) A string of format `r,g,b` representing the color of the [editor layer](lua://EditorLayer). `r`, `g`, and `b` are integers within [0,255].
 
-# class EditorAction
+# class `EditorAction`
 
 ### `[EditorAction].Type: string`
  (READ-ONLY) The type of action that was performed.
 ### `[EditorAction].Perform: fun(): nil`
  (READ-ONLY) Performs the action.
 
-# class Vector2
+# class `Vector2`
 
 ### `[Vector2].x: number`
 ### `[Vector2].y: number`
 
-# class Vector3
+# class `Vector3`
 
 ### `[Vector3].x: number`
 ### `[Vector3].y: number`
 ### `[Vector3].z: number`
 
-# class Vector4
+# class `Vector4`
 
 ### `[Vector4].x: number`
 ### `[Vector4].y: number`
@@ -100,7 +100,7 @@
 
 
 
-# global vector
+# global `vector`
 ## `function vector.Abs(v)`
 (READ-ONLY) Returns the absolute value of each element of a vector.
 ### Parameters:
@@ -394,7 +394,7 @@
 - `n: number` - Any number.
 ### Returns:
 - `Vector2` - A [`Vector2`](lua://Vector2) with all elements being `0`.
-# global actions
+# global `actions`
 ## `function actions.Perform(action)`
 (READ-ONLY) Performs a given [editor action](lua://EditorAction).
 ### Parameters:
@@ -790,7 +790,7 @@
 - `id: string` - The id of the [timing group](lua://ScrollGroup) to move the [hit objects](lua://HitObject) to, which must be obtained via [`state.SelectedScrollGroup`](lua://state.SelectedScrollGroup) or something similar.
 ### Returns:
 - `nil`
-# global state
+# global `state`
 ## `function state.SetValue(key, value)`
 (READ-ONLY) Stores a value that can be retrieved by [`state.GetValue`](lua://state.GetValue). Mainly used to persist data between hot-reloads.
 ### Parameters:
@@ -807,7 +807,7 @@
 - `fallback?: T` - An optional term to return, if the result is `nil`.
 ### Returns:
 - `T` - The stored value.
-# global utils
+# global `utils`
 ## `function utils.CreateScrollVelocity(startTime, multiplier)`
 (READ-ONLY) Creates a [scroll velocity](lua://ScrollVelocity), to later be placed into an [`EditorAction`](lua://utils.CreateEditorAction) and executed.
 ### Parameters:
@@ -897,51 +897,51 @@
 ## `function utils.IsKeyPressed(key)`
 (READ-ONLY) Returns `true` if the given key is pressed within the given frame.
 ### Parameters:
-- `key: Key` - 
+- `key: Key` - A key, from the `keys` enum.
 ### Returns:
-- `boolean` - 
+- `boolean` - Whether or not the key has been pressed this frame.
 
 
 ## `function utils.IsKeyReleased(key)`
 (READ-ONLY) Returns `true` if the given key is released within the given frame.
 ### Parameters:
-- `key: Key` - 
+- `key: Key` - A key, from the `keys` enum.
 ### Returns:
-- `boolean` - 
+- `boolean` - Whether or not the key has been released this frame.
 
 
 ## `function utils.IsKeyDown(key)`
 (READ-ONLY) Returns `true` if the given key is held down within the given frame.
 ### Parameters:
-- `key: Key` - 
+- `key: Key` - A key, from the `keys` enum.
 ### Returns:
-- `boolean` - 
+- `boolean` - Whether or not the key is currently being held down.
 
 
 ## `function utils.IsKeyUp(key)`
 (READ-ONLY) Returns `true` if the given key is not held down within the given frame.
 ### Parameters:
-- `key: Key` - 
+- `key: Key` - A key, from the `keys` enum.
 ### Returns:
-- `boolean` - 
+- `boolean` - Whether or not the key is currently not held down.
 
 
 ## `function utils.GenerateTimingGroupId(prefix)`
 (READ-ONLY) Returns a unique `tgId` with the given prefix. If no prefix is given, defaults to `SG_`.
 ### Parameters:
-- `prefix?: string` - 
+- `prefix?: string` - An optional prefix to all of the ids.
 ### Returns:
-- `string` - 
+- `string` - The new timing group id, to be passed into an [`EditorAction`](lua://EditorAction) (of type `CreateTimingGroup`).
 
 
 ## `function utils.GenerateTimingGroupIds(count, prefix)`
 (READ-ONLY) Returns `count` number of `tgIds` with the given prefix. If no prefix is given, defaults to `SG_`.
 ### Parameters:
-- `count: integer` - 
-- `prefix?: string` - 
+- `count: integer` - The number of timing group ids to generate.
+- `prefix?: string` - An optional prefix to all of the ids.
 ### Returns:
-- `string` - 
-# global map
+- `string[]` - The new timing group ids, to be passed into some [`EditorActions`](lua://EditorAction) (of type `CreateTimingGroup`).
+# global `map`
 ## `function map.ToString()`
 (READ-ONLY) Returns the map metadata in the form of `{Artist} - {Title} [{Difficulty}]`.
 ### Parameters:

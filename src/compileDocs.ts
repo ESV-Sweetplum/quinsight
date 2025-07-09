@@ -55,7 +55,7 @@ classGroups.forEach((cls: string[]) => {
         }
     });
 
-    const classStr = `# class ${className}\n\n${fields
+    const classStr = `# class \`${className}\`\n\n${fields
         .map(
             (field) =>
                 `### \`[${className}].${field.fieldName}: ${field.fieldType}\`${
@@ -100,13 +100,10 @@ functionGroups.forEach((fn: string[]) => {
             .filter((line) => line.includes('@return'))
             .map(
                 (param) =>
-                    `- \`${param.split(' ')[1]}${
-                        param.split(' ')[3] === 'nil' ? '?' : ''
-                    }\` - ${
-                        param.split(' ')[3] === 'nil'
-                            ? param.split(' ').slice(5).join(' ')
-                            : param.split(' ').slice(3).join(' ')
-                    }`
+                    `- \`${param.split(' ')[1]}\` - ${param
+                        .split(' ')
+                        .slice(3)
+                        .join(' ')}`
             )
             .join('\n') || '- `nil`'
     }\n`;
@@ -120,7 +117,7 @@ functionGroups.forEach((fn: string[]) => {
 outputStr = `${outputStr}\n\n`;
 
 Object.entries(dict).forEach(([global, arr]: [string, string[]]) => {
-    outputStr = `${outputStr}# global ${global}\n${arr.join('\n\n')}`;
+    outputStr = `${outputStr}# global \`${global}\`\n${arr.join('\n\n')}`;
 });
 
 fs.writeFileSync('DOCS.md', outputStr);

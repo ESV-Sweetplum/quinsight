@@ -866,44 +866,44 @@ function utils.MillisecondsToTime(time) end
 
 --- ##### (READ-ONLY)
 --- #### Returns `true` if the given key is pressed within the given frame.
----@param key Key
----@return boolean
+---@param key Key A key, from the `keys` enum.
+---@return boolean keyPressed Whether or not the key has been pressed this frame.
 ---@nodiscard
 function utils.IsKeyPressed(key) end
 
 --- ##### (READ-ONLY)
 --- #### Returns `true` if the given key is released within the given frame.
----@param key Key
----@return boolean
+---@param key Key A key, from the `keys` enum.
+---@return boolean keyReleased Whether or not the key has been released this frame.
 ---@nodiscard
 function utils.IsKeyReleased(key) end
 
 --- ##### (READ-ONLY)
 --- #### Returns `true` if the given key is held down within the given frame.
----@param key Key
----@return boolean
+---@param key Key A key, from the `keys` enum.
+---@return boolean keyDown Whether or not the key is currently being held down.
 ---@nodiscard
 function utils.IsKeyDown(key) end
 
 --- ##### (READ-ONLY)
 --- #### Returns `true` if the given key is not held down within the given frame.
----@param key Key
----@return boolean
+---@param key Key A key, from the `keys` enum.
+---@return boolean keyUp Whether or not the key is currently not held down.
 ---@nodiscard
 function utils.IsKeyUp(key) end
 
 --- ##### (READ-ONLY)
 --- #### Returns a unique `tgId` with the given prefix. If no prefix is given, defaults to `SG_`.
----@param prefix? string
----@return string
+---@param prefix? string An optional prefix to all of the ids.
+---@return string tgId The new timing group id, to be passed into an [`EditorAction`](lua://EditorAction) (of type `CreateTimingGroup`).
 ---@nodiscard
 function utils.GenerateTimingGroupId(prefix) end
 
 --- ##### (READ-ONLY)
 --- #### Returns `count` number of `tgIds` with the given prefix. If no prefix is given, defaults to `SG_`.
----@param count integer
----@param prefix? string
----@return string
+---@param count integer The number of timing group ids to generate.
+---@param prefix? string An optional prefix to all of the ids.
+---@return string[] tgIds The new timing group ids, to be passed into some [`EditorActions`](lua://EditorAction) (of type `CreateTimingGroup`).
 ---@nodiscard
 function utils.GenerateTimingGroupIds(count, prefix) end
 
@@ -970,14 +970,14 @@ function map.GetKeyCount(includeScratch) end
 
 --- ##### (READ-ONLY)
 --- #### Returns the most common BPM in the map, determined by how much time a particular BPM is used.
----@return number | nil Bpm The BPM. This number should be identical to the BPM displayed in the song select menu.
+---@return number? Bpm The BPM. This number should be identical to the BPM displayed in the song select menu.
 ---@nodiscard
 function map.GetCommonBpm() end
 
 --- ##### (READ-ONLY)
 --- #### Returns the nearest [timing point](lua://TimingPoint) before the given `time`.
 ---@param time number The time to start looking from, in milliseconds.
----@return TimingPoint | nil tp The requested [timing point](lua://TimingPoint).
+---@return TimingPoint? tp The requested [timing point](lua://TimingPoint).
 ---@nodiscard
 function map.GetTimingPointAt(time) end
 
@@ -985,7 +985,7 @@ function map.GetTimingPointAt(time) end
 --- #### Returns the nearest [scroll velocity](lua://ScrollVelocity) before the given `time`, within `tgId`. If `tgId` is not given, it will search within the currently selected [scroll group](lua://ScrollGroup).
 ---@param time number The time to start looking from, in milliseconds.
 ---@param tgId? string The [timing group](lua://ScrollGroup) to look within. If this option is omitted, the function will search within the currently selected [timing group](lua://ScrollGroup).
----@return ScrollVelocity | nil sv The requested [scroll velocity](lua://ScrollVelocity).
+---@return ScrollVelocity? sv The requested [scroll velocity](lua://ScrollVelocity).
 ---@nodiscard
 function map.GetScrollVelocityAt(time, tgId) end
 
@@ -993,14 +993,14 @@ function map.GetScrollVelocityAt(time, tgId) end
 --- #### Returns the nearest [scroll speed factor](lua://ScrollSpeedFactor) before the given `time`, within `tgId`. If `tgId` is not given, it will search within the currently selected [scroll group](lua://ScrollGroup).
 ---@param time number The time to start looking from, in milliseconds.
 ---@param tgId? string The [timing group](lua://ScrollGroup) to look within. If this option is omitted, the function will search within the currently selected [timing group](lua://ScrollGroup).
----@return ScrollSpeedFactor | nil ssf The requested [scroll speed factor](lua://ScrollSpeedFactor).
+---@return ScrollSpeedFactor? ssf The requested [scroll speed factor](lua://ScrollSpeedFactor).
 ---@nodiscard
 function map.GetScrollSpeedFactorAt(time, tgId) end
 
 --- ##### (READ-ONLY)
 --- #### Returns the [timing group](lua://ScrollGroup) corresponding with the given id.
 ---@param tgId string The id to search with.
----@return ScrollGroup | nil tg The [timing group](lua://ScrollGroup) corresponding to the id.
+---@return ScrollGroup? tg The [timing group](lua://ScrollGroup) corresponding to the id.
 ---@nodiscard
 function map.GetTimingGroup(tgId) end
 
@@ -1013,21 +1013,21 @@ function map.GetTimingGroupIds() end
 --- ##### (READ-ONLY)
 --- #### Returns all [hit objects](lua://HitObject) within the id's corresponding [timing group](lua://ScrollGroup).
 ---@param tgId string The [timing group](lua://ScrollGroup) to look within.
----@return HitObject[] | nil hos All [hit objects](lua://HitObject) within the requested [timing group](lua://ScrollGroup).
+---@return HitObject[]? hos All [hit objects](lua://HitObject) within the requested [timing group](lua://ScrollGroup).
 ---@nodiscard
 function map.GetTimingGroupObjects(tgId) end
 
 --- ##### (READ-ONLY)
 --- #### Returns the nearest [bookmark](lua://Bookmark) before the given `time`.
 ---@param time number The time to start looking from, in milliseconds.
----@return Bookmark | nil bm The requested [bookmark](lua://Bookmark).
+---@return Bookmark? bm The requested [bookmark](lua://Bookmark).
 ---@nodiscard
 function map.GetBookmarkAt(time) end
 
 --- ##### (READ-ONLY)
 --- #### Returns the length of the given [timing point](lua://TimingPoint), in milliseconds.
 ---@param tp TimingPoint The timing point to use.
----@return number | nil duration The duration between the given [timing point](lua://TimingPoint) and the next [timing point](lua://TimingPoint).
+---@return number? duration The duration between the given [timing point](lua://TimingPoint) and the next [timing point](lua://TimingPoint).
 ---@nodiscard
 function map.GetTimingPointLength(tp) end
 
@@ -1036,7 +1036,7 @@ function map.GetTimingPointLength(tp) end
 ---@param forwards boolean Whether or not the nearest snap should be searched forwards or backwards in time.
 ---@param snap integer The denominator of the desired snap.
 ---@param time number The time to start looking from, in milliseconds.
----@return number | nil snapTime The nearest time which follows the given snap.
+---@return number? snapTime The nearest time which follows the given snap.
 ---@nodiscard
 function map.GetNearestSnapTimeFromTime(forwards, snap, time) end
 
@@ -1065,7 +1065,7 @@ function expr(str) end
 
 --- ##### (READ-ONLY)
 --- #### Evaluates the string as Lua code, in the current context. This function is capable of doing anything that the script already can.
----@param str string
+---@param str string The string to evaluate.
 ---@return any value The resultant value.
 ---@nodiscard
 function eval(str) end
