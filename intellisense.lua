@@ -1332,15 +1332,10 @@ history_type = {
     Undo = 2,
 }
 
+-- END QUAVER, START IMGUI
+
 ---@class Type
-
-
-
-
-
--- Imgui shit
-
-imgui = {}
+imgui        = {}
 
 --- ##### (READ-ONLY)
 ---@param type string
