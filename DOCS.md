@@ -1,113 +1,84 @@
 # class ScrollGroup
 
 ### `[ScrollGroup].InitialScrollVelocity: number`
-##### (READ-ONLY)
-#### The initial [sv](lua://ScrollVelocity) multiplier of this [scroll group](lua://ScrollGroup).
+ (READ-ONLY) The initial [sv](lua://ScrollVelocity) multiplier of this [scroll group](lua://ScrollGroup).
 ### `[ScrollGroup].ScrollVelocities: ScrollVelocity[]`
-##### (READ-ONLY)
-#### All [scroll velocities](lua://ScrollVelocity) within the [scroll group](lua://ScrollGroup).
+ (READ-ONLY) All [scroll velocities](lua://ScrollVelocity) within the [scroll group](lua://ScrollGroup).
 ### `[ScrollGroup].ScrollSpeedFactors: ScrollSpeedFactor[]`
-##### (READ-ONLY)
-#### All [scroll speed factors](lua://ScrollSpeedFactor) within the [scroll group](lua://ScrollGroup).
+ (READ-ONLY) All [scroll speed factors](lua://ScrollSpeedFactor) within the [scroll group](lua://ScrollGroup).
 ### `[ScrollGroup].GetScrollVelocityAt: fun(time: number): ScrollVelocity`
-##### (READ-ONLY)
-#### Gets the nearest [scroll velocity](lua://ScrollVelocity) before the `time` parameter.
+ (READ-ONLY) Gets the nearest [scroll velocity](lua://ScrollVelocity) before the `time` parameter.
 ### `[ScrollGroup].GetScrollSpeedFactorAt: fun(time: number): ScrollSpeedFactor`
-##### (READ-ONLY)
-#### Gets the nearest [scroll speed factor](lua://ScrollSpeedFactor) before the `time` parameter.
+ (READ-ONLY) Gets the nearest [scroll speed factor](lua://ScrollSpeedFactor) before the `time` parameter.
 ### `[ScrollGroup].ColorRgb: string`
-##### (READ-ONLY)
-#### A string of format `r,g,b` representing the color of the [editor layer](lua://EditorLayer). `r`, `g`, and `b` are integers within [0,255].
+ (READ-ONLY) A string of format `r,g,b` representing the color of the [editor layer](lua://EditorLayer). `r`, `g`, and `b` are integers within [0,255].
 ### `[ScrollGroup].Hidden: boolean`
-##### (READ-ONLY)
-#### Determines whether or not the timing group color is visible in the editor.
+ (READ-ONLY) Determines whether or not the timing group color is visible in the editor.
 
 # class ScrollSpeedFactor
 
 ### `[ScrollSpeedFactor].StartTime: number`
-##### (READ-ONLY)
-#### The time at which the [scroll speed factor](lua://ScrollSpeedFactor) takes effect.
+ (READ-ONLY) The time at which the [scroll speed factor](lua://ScrollSpeedFactor) takes effect.
 ### `[ScrollSpeedFactor].Multiplier: number`
-##### (READ-ONLY)
-#### The factor at which to multiply the player's scroll speed.
+ (READ-ONLY) The factor at which to multiply the player's scroll speed.
 
 # class ScrollVelocity
 
 ### `[ScrollVelocity].StartTime: number`
-##### (READ-ONLY)
-#### The time at which the [scroll velocity](lua://ScrollVelocity) takes effect.
+ (READ-ONLY) The time at which the [scroll velocity](lua://ScrollVelocity) takes effect.
 ### `[ScrollVelocity].Multiplier: number`
-##### (READ-ONLY)
-#### The factor at which to multiply the player's [scroll velocity](lua://ScrollVelocity).
+ (READ-ONLY) The factor at which to multiply the player's [scroll velocity](lua://ScrollVelocity).
 
 # class Bookmark
 
 ### `[Bookmark].StartTime: integer`
-##### (READ-ONLY)
-#### The time the [bookmark](lua://Bookmark) is attached to.
+ (READ-ONLY) The time the [bookmark](lua://Bookmark) is attached to.
 ### `[Bookmark].Note: string`
-##### (READ-ONLY)
-#### The contents of the [bookmark](lua://Bookmark).
+ (READ-ONLY) The contents of the [bookmark](lua://Bookmark).
 
 # class HitObject
 
 ### `[HitObject].StartTime: integer`
-##### (READ-ONLY)
-#### The time the note is present.
+ (READ-ONLY) The time the note is present.
 ### `[HitObject].Lane: NoteLane`
-##### (READ-ONLY)
-#### The lane the note is in.
+ (READ-ONLY) The lane the note is in.
 ### `[HitObject].EndTime: number`
-##### (READ-ONLY)
-#### The time the long note ends. If this note is not a long note, this value is 0.
+ (READ-ONLY) The time the long note ends. If this note is not a long note, this value is 0.
 ### `[HitObject].HitSound: HitSounds`
-##### (READ-ONLY)
-#### A bitwise mask representing hitsounds.
+ (READ-ONLY) A bitwise mask representing hitsounds.
 ### `[HitObject].EditorLayer: integer`
-##### (READ-ONLY)
-#### The id of the [editor layer](lua://EditorLayer) this note is in.
+ (READ-ONLY) The id of the [editor layer](lua://EditorLayer) this note is in.
 ### `[HitObject].IsLongNote: boolean`
-##### (READ-ONLY)
-#### `true` if this note is a long note, false otherwise.
+ (READ-ONLY) `true` if this note is a long note, false otherwise.
 ### `[HitObject].TimingGroup: string`
-##### (READ-ONLY)
-#### The id of the [timing group](lua://ScrollGroup) that this note belongs to.
+ (READ-ONLY) The id of the [timing group](lua://ScrollGroup) that this note belongs to.
 
 # class TimingPoint
 
 ### `[TimingPoint].StartTime: number`
-##### (READ-ONLY)
-#### The time in which the [timing point](lua://TimingPoint) is located.
+ (READ-ONLY) The time in which the [timing point](lua://TimingPoint) is located.
 ### `[TimingPoint].Bpm: number`
-##### (READ-ONLY)
-#### The beats per minute, or bpm of the [timing point](lua://TimingPoint).
+ (READ-ONLY) The beats per minute, or bpm of the [timing point](lua://TimingPoint).
 ### `[TimingPoint].Signature: number`
-##### (READ-ONLY)
-#### The time signature of the [timing point](lua://TimingPoint).
+ (READ-ONLY) The time signature of the [timing point](lua://TimingPoint).
 ### `[TimingPoint].Hidden: boolean`
-##### (READ-ONLY)
-#### Determines whether or not the timing lines are rendered.
+ (READ-ONLY) Determines whether or not the timing lines are rendered.
 
 # class EditorLayer
 
 ### `[EditorLayer].Name: string`
-##### (READ-ONLY)
-#### The name of the [editor layer](lua://EditorLayer).
+ (READ-ONLY) The name of the [editor layer](lua://EditorLayer).
 ### `[EditorLayer].Hidden: boolean`
-##### (READ-ONLY)
-#### `true` if the layer is hidden within the editor.
+ (READ-ONLY) `true` if the layer is hidden within the editor.
 ### `[EditorLayer].ColorRgb: string`
-##### (READ-ONLY)
-#### A string of format `r,g,b` representing the color of the [editor layer](lua://EditorLayer). `r`, `g`, and `b` are integers within [0,255].
+ (READ-ONLY) A string of format `r,g,b` representing the color of the [editor layer](lua://EditorLayer). `r`, `g`, and `b` are integers within [0,255].
 
 # class EditorAction
 
 ### `[EditorAction].Type: string`
-##### (READ-ONLY)
-#### The type of action that was performed.
+ (READ-ONLY) The type of action that was performed.
 ### `[EditorAction].Perform: fun(): nil`
-##### (READ-ONLY)
-#### Performs the action.
+ (READ-ONLY) Performs the action.
 
 # class Vector2
 
@@ -133,20 +104,20 @@
 ## `function vector.Abs(v)`
 (READ-ONLY) Returns the absolute value of each element of a vector.
 ### Parameters:
-- `vnumber | Vector2 | Vector3 | Vector4` - The initial vector.
+- `v: number | Vector2 | Vector3 | Vector4` - The initial vector.
 
 ## `function vector.Add(v1, v2)`
 (READ-ONLY) Returns the sum of two vectors.
 ### Parameters:
-- `v1number | Vector2 | Vector3 | Vector4` - The first vector.
-- `v2number | Vector2 | Vector3 | Vector4` - The second vector.
+- `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
+- `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
 
 ## `function vector.Clamp(v, min, max)`
 (READ-ONLY) Clamps a vector between two others.
 ### Parameters:
-- `vnumber | Vector2 | Vector3 | Vector4` - The vector to clamp.
-- `minnumber | Vector2 | Vector3 | Vector4` - The floor of the resultant vector.
-- `maxnumber | Vector2 | Vector3 | Vector4` - The ceiling of the resultant vector.
+- `v: number | Vector2 | Vector3 | Vector4` - The vector to clamp.
+- `min: number | Vector2 | Vector3 | Vector4` - The floor of the resultant vector.
+- `max: number | Vector2 | Vector3 | Vector4` - The ceiling of the resultant vector.
 
 ## `function vector.Cross(v1, v2)`
 (READ-ONLY) Takes a cross product between two vectors (only works with [`Vector3`](lua://Vector3)).
@@ -157,67 +128,67 @@
 ## `function vector.Distance(v1, v2)`
 (READ-ONLY) Finds the distance between two vectors.
 ### Parameters:
-- `v1number | Vector2 | Vector3 | Vector4` - The first vector.
-- `v2number | Vector2 | Vector3 | Vector4` - The second vector.
+- `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
+- `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
 
 ## `function vector.DistanceSquared(v1, v2)`
 (READ-ONLY) Finds the distance between two vectors, squared.
 ### Parameters:
-- `v1number | Vector2 | Vector3 | Vector4` - The first vector.
-- `v2number | Vector2 | Vector3 | Vector4` - The second vector.
+- `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
+- `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
 
 ## `function vector.Divide(v1, v2)`
 (READ-ONLY) Divides two vectors, termwise.
 ### Parameters:
-- `v1number | Vector2 | Vector3 | Vector4` - The first vector.
-- `v2number | Vector2 | Vector3 | Vector4` - The second vector.
+- `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
+- `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
 
 ## `function vector.Dot(v1, v2)`
 (READ-ONLY) Takes the dot product of two vectors; that is, multiplies the two vectors termwise then returns the sum of the resulting terms.
 ### Parameters:
-- `v1number | Vector2 | Vector3 | Vector4` - The first vector.
-- `v2number | Vector2 | Vector3 | Vector4` - The second vector.
+- `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
+- `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
 
 ## `function vector.Length(v)`
 (READ-ONLY) Determines the length of a vector.
 ### Parameters:
-- `vnumber | Vector2 | Vector3 | Vector4` - The vector to measure.
+- `v: number | Vector2 | Vector3 | Vector4` - The vector to measure.
 
 ## `function vector.Lerp(v1, v2, f)`
 (READ-ONLY) Returns a vector that is `(f * 100)%` of the way from travelling between `v1` and `v2`.
 ### Parameters:
-- `v1number | Vector2 | Vector3 | Vector4` - The first vector.
-- `v2number | Vector2 | Vector3 | Vector4` - The second vector.
+- `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
+- `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
 - `f: number` - A number within [0-1] which determines the weight of `v2`.
 
 ## `function vector.Max(v1, v2)`
 (READ-ONLY) Returns a vector which has the maximum value of both vectors, termwise.
 ### Parameters:
-- `v1number | Vector2 | Vector3 | Vector4` - The first vector.
-- `v2number | Vector2 | Vector3 | Vector4` - The second vector.
+- `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
+- `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
 
 ## `function vector.Min(v1, v2)`
 (READ-ONLY) Returns a vector which has the minimum value of both vectors, termwise.
 ### Parameters:
-- `v1number | Vector2 | Vector3 | Vector4` - The first vector.
-- `v2number | Vector2 | Vector3 | Vector4` - The second vector.
+- `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
+- `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
 
 ## `function vector.Modulo(v1, v2)`
 (READ-ONLY) Returns a vector which has the remainder of the first vector divided by the second, termwise.
 ### Parameters:
-- `v1number | Vector2 | Vector3 | Vector4` - The first vector.
-- `v2number | Vector2 | Vector3 | Vector4` - The second vector.
+- `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
+- `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
 
 ## `function vector.Multiply(v1, v2)`
 (READ-ONLY) Multiplies the two vectors termwise and returns the product.
 ### Parameters:
-- `v1number | Vector2 | Vector3 | Vector4` - The first vector.
-- `v2number | Vector2 | Vector3 | Vector4` - The second vector.
+- `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
+- `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
 
 ## `function vector.Negate(v)`
 (READ-ONLY) Negates the given vector termwise.
 ### Parameters:
-- `vnumber | Vector2 | Vector3 | Vector4` - The vector to negate.
+- `v: number | Vector2 | Vector3 | Vector4` - The vector to negate.
 
 ## `function vector.New(s1, s2, s3, s4)`
 (READ-ONLY) Creates a new [`Vector4`](lua://Vector4).
@@ -230,7 +201,7 @@
 ## `function vector.Normalize(v)`
 (READ-ONLY) Normalizes the given vector such that it has a magnitude of 1.
 ### Parameters:
-- `vnumber | Vector2 | Vector3 | Vector4` - The vector to normalize.
+- `v: number | Vector2 | Vector3 | Vector4` - The vector to normalize.
 
 ## `function vector.One(n)`
 (READ-ONLY) Returns a [`Vector2`](lua://Vector2), with all elements being `1`.
@@ -240,25 +211,25 @@
 ## `function vector.Reflect(v, norm)`
 (READ-ONLY) Reflects a vector across a surface given by its normal vector and pivot point [`vector.Zero`](lua://vector.Zero).
 ### Parameters:
-- `vnumber | Vector2 | Vector3 | Vector4` - The vector to reflect.
-- `normnumber | Vector2 | Vector3 | Vector4` - The normal vector of the surface in which to reflect `v`.
+- `v: number | Vector2 | Vector3 | Vector4` - The vector to reflect.
+- `norm: number | Vector2 | Vector3 | Vector4` - The normal vector of the surface in which to reflect `v`.
 
 ## `function vector.RemEuclid(v1, v2)`
 (READ-ONLY) Returns a vector which has the euclidean remainder of the first vector divided by the second, termwise. A euclidean remainder is like a normal remainder, but if the closest normal remainder is negative then the divisor is added to make it positive.
 ### Parameters:
-- `v1number | Vector2 | Vector3 | Vector4` - The first vector.
-- `v2number | Vector2 | Vector3 | Vector4` - The second vector.
+- `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
+- `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
 
 ## `function vector.SquareRoot(v)`
 (READ-ONLY) Square roots the given vector, termwise.
 ### Parameters:
-- `vnumber | Vector2 | Vector3 | Vector4` - The vector to root.
+- `v: number | Vector2 | Vector3 | Vector4` - The vector to root.
 
 ## `function vector.Subtract(v1, v2)`
 (READ-ONLY) Returns the difference of two vectors.
 ### Parameters:
-- `v1number | Vector2 | Vector3 | Vector4` - The first vector.
-- `v2number | Vector2 | Vector3 | Vector4` - The second vector.
+- `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
+- `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
 
 ## `function vector.Table(v)`
 (READ-ONLY) Coerces a [`Vector4`](lua://Vector4) to become a numerically-indexed table.
@@ -268,22 +239,22 @@
 ## `function vector.UnitW(dim)`
 (READ-ONLY) Creates a unit vector in the `W` direction with the given dimension.
 ### Parameters:
-- `dimVector2 | Vector3 | Vector4` - The dimension of the vector to produce. Assuming a vector is given as the argument, the dimension of that vector is used instead.
+- `dim: Vector2 | Vector3 | Vector4` - The dimension of the vector to produce. Assuming a vector is given as the argument, the dimension of that vector is used instead.
 
 ## `function vector.UnitX(dim)`
 (READ-ONLY) Creates a unit vector in the `X` direction with the given dimension.
 ### Parameters:
-- `dimVector2 | Vector3 | Vector4` - The dimension of the vector to produce. Assuming a vector is given as the argument, the dimension of that vector is used instead.
+- `dim: Vector2 | Vector3 | Vector4` - The dimension of the vector to produce. Assuming a vector is given as the argument, the dimension of that vector is used instead.
 
 ## `function vector.UnitY(dim)`
 (READ-ONLY) Creates a unit vector in the `Y` direction with the given dimension.
 ### Parameters:
-- `dimVector2 | Vector3 | Vector4` - The dimension of the vector to produce. Assuming a vector is given as the argument, the dimension of that vector is used instead.
+- `dim: Vector2 | Vector3 | Vector4` - The dimension of the vector to produce. Assuming a vector is given as the argument, the dimension of that vector is used instead.
 
 ## `function vector.UnitZ(dim)`
 (READ-ONLY) Creates a unit vector in the `Z` direction with the given dimension.
 ### Parameters:
-- `dimVector2 | Vector3 | Vector4` - The dimension of the vector to produce. Assuming a vector is given as the argument, the dimension of that vector is used instead.
+- `dim: Vector2 | Vector3 | Vector4` - The dimension of the vector to produce. Assuming a vector is given as the argument, the dimension of that vector is used instead.
 
 ## `function vector.Zero(n)`
 (READ-ONLY) Returns a [`Vector2`](lua://Vector2), with all elements being `0`.

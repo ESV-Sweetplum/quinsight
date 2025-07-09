@@ -45,9 +45,9 @@ classGroups.forEach((cls: string[]) => {
 
             while (cls[searchIndex].includes('--- ##')) {
                 fieldDesc = `${cls[searchIndex].replaceAll(
-                    '--- ',
+                    /(--- |#)/g,
                     ''
-                )}\n${fieldDesc}`.trimEnd();
+                )}${fieldDesc}`.trimEnd();
                 searchIndex--;
             }
 
