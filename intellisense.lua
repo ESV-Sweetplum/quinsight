@@ -105,7 +105,7 @@ For more information, please refer to <https://unlicense.org>
 --- ##### (READ-ONLY)
 --- #### `true` if this note is a long note, false otherwise.
 ---@field IsLongNote boolean
----##### (READ-ONLY)
+--- ##### (READ-ONLY)
 --- #### The id of the [timing group](lua://ScrollGroup) that this note belongs to.
 ---@field TimingGroup string
 
