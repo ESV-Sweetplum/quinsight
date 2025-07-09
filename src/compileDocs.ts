@@ -23,7 +23,7 @@ groups.forEach((group) => {
 });
 
 const dict = globals.reduce((obj, global) => {
-    obj[global] = {};
+    obj[global] = [];
     return obj;
 }, {});
 
@@ -73,7 +73,6 @@ functionGroups.forEach((fn: string[]) => {
     }
     const functionName = lastLine.split(' ')[1].split('(')[0];
     const global = functionName.split('.')[0];
-    const method = functionName.split('.')[1];
     let functionDesc = '';
     let generic = '';
     fn.forEach((line) => {
@@ -98,15 +97,13 @@ functionGroups.forEach((fn: string[]) => {
         )
         .join('\n')}`;
     if (generic) functionStr = functionStr.replaceAll(': T', `: ${generic}`);
-    dict[global][method] = functionStr;
+    dict[global].push(functionStr);
 });
 
 outputStr = `${outputStr}\n\n`;
 
-Object.entries(dict).forEach(([global, obj]) => {
-    outputStr = `${outputStr}# global ${global}\n${Object.values(obj).join(
-        '\n\n'
-    )}`;
+Object.entries(dict).forEach(([global, arr]: [string, string[]]) => {
+    outputStr = `${outputStr}# global ${global}\n${arr.join('\n\n')}`;
 });
 
 fs.writeFileSync('DOCS.md', outputStr);

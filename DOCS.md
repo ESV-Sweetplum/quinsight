@@ -190,6 +190,19 @@
 ### Parameters:
 - `v: number | Vector2 | Vector3 | Vector4` - The vector to negate.
 
+## `function vector.New(s1, s2)`
+(READ-ONLY) Creates a new [`Vector2`](lua://Vector2).
+### Parameters:
+- `s1: number` - The first element.
+- `s2: number` - The second element.
+
+## `function vector.New(s1, s2, s3)`
+(READ-ONLY) Creates a new [`Vector3`](lua://Vector3).
+### Parameters:
+- `s1: number` - The first element.
+- `s2: number` - The second element.
+- `s3: number` - The third element.
+
 ## `function vector.New(s1, s2, s3, s4)`
 (READ-ONLY) Creates a new [`Vector4`](lua://Vector4).
 ### Parameters:
@@ -202,6 +215,11 @@
 (READ-ONLY) Normalizes the given vector such that it has a magnitude of 1.
 ### Parameters:
 - `v: number | Vector2 | Vector3 | Vector4` - The vector to normalize.
+
+## `function vector.One(n)`
+(READ-ONLY) Returns a vector of a requested dimension, with all elements being `1`.
+### Parameters:
+- `n: Vector2 | Vector3 | Vector4` - The dimension of the vector. Assuming a vector is given as the argument, the dimension of the given vector is used.
 
 ## `function vector.One(n)`
 (READ-ONLY) Returns a [`Vector2`](lua://Vector2), with all elements being `1`.
@@ -232,6 +250,16 @@
 - `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
 
 ## `function vector.Table(v)`
+(READ-ONLY) Coerces a [`Vector2`](lua://Vector2) to become a numerically-indexed table.
+### Parameters:
+- `v: Vector2` - The vector to pack.
+
+## `function vector.Table(v)`
+(READ-ONLY) Coerces a [`Vector3`](lua://Vector3) to become a numerically-indexed table.
+### Parameters:
+- `v: Vector3` - The vector to pack.
+
+## `function vector.Table(v)`
 (READ-ONLY) Coerces a [`Vector4`](lua://Vector4) to become a numerically-indexed table.
 ### Parameters:
 - `v: Vector4` - The vector to pack.
@@ -257,6 +285,11 @@
 - `dim: Vector2 | Vector3 | Vector4` - The dimension of the vector to produce. Assuming a vector is given as the argument, the dimension of that vector is used instead.
 
 ## `function vector.Zero(n)`
+(READ-ONLY) Returns a vector of a requested dimension, with all elements being `0`.
+### Parameters:
+- `n: Vector2 | Vector3 | Vector4` - The dimension of the vector. Assuming a vector is given as the argument, the dimension of the given vector is used.
+
+## `function vector.Zero(n)`
 (READ-ONLY) Returns a [`Vector2`](lua://Vector2), with all elements being `0`.
 ### Parameters:
 - `n: number` - Any number.# global actions
@@ -279,6 +312,11 @@
 (READ-ONLY) Redoes the most recent undo.
 ### Parameters:
 
+
+## `function actions.PlaceHitObject(ho)`
+(READ-ONLY) Places a given [hit object](lua://HitObject), without the need to create an [editor action](lua://EditorAction).
+### Parameters:
+- `ho: HitObject` - The [hit object](lua://HitObject) to place, which must be created via [`utils.CreateHitObject`](lua://utils.CreateHitObject).
 
 ## `function actions.PlaceHitObject(lane, startTime,`
 (READ-ONLY) Places a new [hit object](lua://HitObject), without the need to create an [editor action](lua://EditorAction).
@@ -443,6 +481,11 @@
 ### Parameters:
 - `snaps: integer[]` - The list of snap denominators to use.
 - `hos: HitObject[]` - The [hit objects](lua://HitObject) to snap, which must be obtained via [`map.HitObjects`](lua://map.HitObjects) or something similar.
+
+## `function actions.AddBookmark(bm)`
+(READ-ONLY) Places a given [bookmark](lua://Bookmark), without the need to create an [editor action](lua://EditorAction).
+### Parameters:
+- `bm: Bookmark` - The [bookmark](lua://Bookmark) to place, which must be created via [`utils.CreateBookmark`](lua://utils.CreateBookmark).
 
 ## `function actions.AddBookmark(time, info)`
 (READ-ONLY) Places a new [bookmark](lua://Bookmark), without the need to create an [editor action](lua://EditorAction).
