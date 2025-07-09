@@ -435,7 +435,7 @@
 - `nil`
 
 
-## `function actions.PlaceHitObject(lane, startTime,`
+## `function actions.PlaceHitObject(lane, startTime, endTime, editorLayer, hitsounds, tgId)`
 (READ-ONLY) Places a new [hit object](lua://HitObject), without the need to create an [editor action](lua://EditorAction).
 ### Parameters:
 - `lane: NoteLane` - The lane of the [hit object](lua://HitObject).
@@ -826,7 +826,7 @@
 - `ScrollSpeedFactor` - The requested [scroll speed factor](lua://ScrollSpeedFactor).
 
 
-## `function utils.CreateHitObject(startTime, lane,`
+## `function utils.CreateHitObject(startTime, lane, endTime, hitsounds, editorLayer)`
 (READ-ONLY) Creates a [hit object](lua://HitObject), to later be placed into an [`EditorAction`](lua://utils.CreateEditorAction) and executed.
 ### Parameters:
 - `startTime: integer` - The time to create the note, in milliseconds.

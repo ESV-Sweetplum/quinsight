@@ -84,7 +84,7 @@ functionGroups.forEach((fn: string[]) => {
             ''
         )}`.trimStart();
     });
-    const displayName = lastLine.split(' end')[0];
+    const displayName = lastLine.split(/ end$/)[0];
 
     let functionStr = `## \`${displayName}\`\n${functionDesc}\n### Parameters:\n${fn
         .filter((line) => line.includes('@param'))
