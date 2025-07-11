@@ -1057,6 +1057,7 @@
 ### Type: `HitObject[]`
 (READ-ONLY)
  A list of all [hit objects](#class-hitobject) within the current selection.
+ If multiple [hit objects](#class-hitobject) are selected at once, the table will be in order of their `StartTime`. If they were selected one at a time using <kbd>Ctrl-Click</kbd>, then the table will be in order of their selection order.
 
 <a id="attribute-state-selectedscrollgroupid"></a>
 ## `attribute state.SelectedScrollGroupId`
