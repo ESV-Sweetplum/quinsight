@@ -6,7 +6,15 @@
   "scripts": {
     "compile": "tsc && node ."
   },
-  "keywords": ["Quaver", "Intellisense", "Lua", "Plugins"],
+  "keywords": [
+    "Quaver",
+    "Intellisense",
+    "Lua",
+    "Plugins"
+  ],
   "author": "ESV-Sweetplum",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.0.12"
+  }
 }
