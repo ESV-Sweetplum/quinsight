@@ -138,10 +138,14 @@ For more information, please refer to <https://unlicense.org>
 ---@class (exact) EditorAction
 ---##### (READ-ONLY)
 ---#### The type of action that was performed.
----@field Type string
+---@field Type userdata
 ---##### (READ-ONLY)
 ---#### Performs the action.
 ---@field Perform fun(): nil
+---##### (READ-ONLY)
+---#### Undoes the action.
+---@field Undo fun(): nil
+
 
 ---@class (exact) Vector2
 ---@field x number The first component of the vector.
