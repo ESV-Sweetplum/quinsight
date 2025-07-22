@@ -245,10 +245,12 @@
 
 ## class `EditorAction`
 
-#### `[EditorAction].Type: string`
+#### `[EditorAction].Type: userdata`
  (READ-ONLY) The type of action that was performed.
 #### `[EditorAction].Perform: fun(): nil`
  (READ-ONLY) Performs the action.
+#### `[EditorAction].Undo: fun(): nil`
+ (READ-ONLY) Undoes the action.
 
 ## class `Vector2`
 
@@ -1349,9 +1351,9 @@ MUST BE SET MANUALLY - Indicates to the game that the window is hovered.
 <a id="attribute-map-timinggroups"></a>
 ## `attribute map.TimingGroups`
 
-### Type: `ScrollGroup[]`
+### Type: `{ [string]: ScrollGroup}`
 (READ-ONLY)
- A table of all [timing groups](#class-scrollgroup) in the map.
+ A table of all [timing groups](#class-scrollgroup) in the map, where the keys are the identifiers of the scroll group.
 
 <a id="attribute-map-defaultscrollgroup"></a>
 ## `attribute map.DefaultScrollGroup`
