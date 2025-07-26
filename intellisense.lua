@@ -139,13 +139,7 @@ For more information, please refer to <https://unlicense.org>
 ---##### (READ-ONLY)
 ---#### The type of action that was performed.
 ---@field Type userdata
----##### (READ-ONLY)
----#### Performs the action.
----@field Perform fun(): nil
----##### (READ-ONLY)
----#### Undoes the action.
----@field Undo fun(): nil
-
+---@
 ---@class (exact) Vector2
 ---@field x number The first component of the vector.
 ---@field y number The second component of the vector.
