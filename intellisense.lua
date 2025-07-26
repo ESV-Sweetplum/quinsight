@@ -139,7 +139,7 @@ For more information, please refer to <https://unlicense.org>
 ---##### (READ-ONLY)
 ---#### The type of action that was performed.
 ---@field Type userdata
----@
+
 ---@class (exact) Vector2
 ---@field x number The first component of the vector.
 ---@field y number The second component of the vector.

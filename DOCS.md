@@ -247,10 +247,6 @@
 
 #### `[EditorAction].Type: userdata`
  (READ-ONLY) The type of action that was performed.
-#### `[EditorAction].Perform: fun(): nil`
- (READ-ONLY) Performs the action.
-#### `[EditorAction].Undo: fun(): nil`
- (READ-ONLY) Undoes the action.
 
 ## class `Vector2`
 
