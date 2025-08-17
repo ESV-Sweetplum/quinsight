@@ -168,6 +168,28 @@
     - [map.GetBookmarkAt](#function-map-getbookmarkat)
     - [map.GetTimingPointLength](#function-map-gettimingpointlength)
     - [map.GetNearestSnapTimeFromTime](#function-map-getnearestsnaptimefromtime)
+### 7. [Bit32 Global](#global-bit32)
+  - Attributes:
+    - None
+  - Functions:
+    - [bit32.arshift](#function-bit32-arshift)
+    - [bit32.band](#function-bit32-band)
+    - [bit32.bnot](#function-bit32-bnot)
+    - [bit32.bor](#function-bit32-bor)
+    - [bit32.test](#function-bit32-test)
+    - [bit32.bxor](#function-bit32-bxor)
+    - [bit32.extract](#function-bit32-extract)
+    - [bit32.replace](#function-bit32-replace)
+    - [bit32.lrotate](#function-bit32-lrotate)
+    - [bit32.lshift](#function-bit32-lshift)
+    - [bit32.rrotate](#function-bit32-rrotate)
+    - [bit32.rshift](#function-bit32-rshift)
+### 8. [Json Global](#global-json)
+  - Attributes:
+    - None
+  - Functions:
+    - [json.serialize](#function-json-serialize)
+    - [json.parse](#function-json-parse)
 ## class `ScrollGroup`
 
 #### `[ScrollGroup].InitialScrollVelocity: number`
@@ -352,11 +374,11 @@
 
 <a id="function-vector-length"></a>
 ## `function vector.Length(v)`
-(READ-ONLY) Determines the length of a vector.
+(READ-ONLY) Determines the literal length of a vector. DOES NOT DETERMINE ITS MAGNITUDE.
 ### Parameters:
 - `v: number | Vector2 | Vector3 | Vector4` - The vector to measure.
 ### Returns:
-- `number` - The magnitude of the vector.
+- `2|3|4` - `4` if the input is a [`Vector4`](#class-vector4), `3` if the input is a [`Vector3`](#class-vector3), and `2` otherwise.
 
 
 <a id="function-vector-lerp"></a>
@@ -1531,3 +1553,139 @@ MUST BE SET MANUALLY - Indicates to the game that the window is hovered.
 - `time: number` - The time to start looking from, in milliseconds.
 ### Returns:
 - `number?` - The nearest time which follows the given snap.
+<a id="global-bit32"></a>
+# global `bit32`
+<a id="function-bit32-arshift"></a>
+## `function bit32.arshift(x, disp)`
+(READ-ONLY) Arithmetically bit shifts a number to the right by `disp` places.
+### Parameters:
+- `x: number` - The number to shift.
+- `disp: integer` - Shifts the number to the right by this many places. If `disp` is negative, shifts to the left instead.
+### Returns:
+- `integer` - 
+
+
+<a id="function-bit32-band"></a>
+## `function bit32.band(...)`
+(READ-ONLY) Returns the bitwise `AND` of the parameters.
+### Parameters:
+- `...: number[]` - 
+### Returns:
+- `integer` - 
+
+
+<a id="function-bit32-bnot"></a>
+## `function bit32.bnot(x)`
+(READ-ONLY) Returns the bitwise `NOT` of the parameters.
+### Parameters:
+- `x: number` - 
+### Returns:
+- `integer` - 
+
+
+<a id="function-bit32-bor"></a>
+## `function bit32.bor(...)`
+(READ-ONLY) Returns the bitwise `OR` of the parameters.
+### Parameters:
+- `...: number[]` - 
+### Returns:
+- `integer` - 
+
+
+<a id="function-bit32-test"></a>
+## `function bit32.test(...)`
+(READ-ONLY) Returns true if the bitwise `AND` of the two parameters is nonzero.
+### Parameters:
+- `...: number[]` - 
+### Returns:
+- `boolean` - 
+
+
+<a id="function-bit32-bxor"></a>
+## `function bit32.bxor(...)`
+(READ-ONLY) Returns the bitwise `XOR` of the parameters.
+### Parameters:
+- `...: number[]` - 
+### Returns:
+- `integer` - 
+
+
+<a id="function-bit32-extract"></a>
+## `function bit32.extract(n, field, width)`
+(READ-ONLY) (From [Lua 5.2 Manual](https://www.lua.org/manual/5.2/manual.html6.7)): Returns the unsigned number formed by the bits `field` to `field + width - 1` from `n`. Bits are numbered from `0` (least significant) to `31` (most significant). All accessed bits must be in the range `[0, 31]`. The default for width is `1`.
+### Parameters:
+- `n: integer` - 
+- `field: integer` - 
+- `width?: integer` - 
+### Returns:
+- `integer` - 
+
+
+<a id="function-bit32-replace"></a>
+## `function bit32.replace(n, v, field, width)`
+(READ-ONLY) (From [Lua 5.2 Manual](https://www.lua.org/manual/5.2/manual.html6.7)): Returns a copy of `n` with the bits `field` to `field + width - 1` replaced by the value `v`. See [bit32.extract](#function-bit32-extract) for details about `field` and `width`.
+### Parameters:
+- `n: integer` - 
+- `v: integer` - 
+- `field: integer` - 
+- `width?: integer` - 
+### Returns:
+- `integer` - 
+
+
+<a id="function-bit32-lrotate"></a>
+## `function bit32.lrotate(x, disp)`
+(READ-ONLY) Rotationally bit shifts a number to the left by `disp` places.
+### Parameters:
+- `x: number` - The number to shift.
+- `disp: integer` - Shifts the number to the left by this many places. If `disp` is negative, shifts to the right instead.
+### Returns:
+- `integer` - 
+
+
+<a id="function-bit32-lshift"></a>
+## `function bit32.lshift(x, disp)`
+(READ-ONLY) Logically bit shifts a number to the left by `disp` places.
+### Parameters:
+- `x: number` - The number to shift.
+- `disp: integer` - Shifts the number to the left by this many places. If `disp` is negative, shifts to the right instead.
+### Returns:
+- `integer` - 
+
+
+<a id="function-bit32-rrotate"></a>
+## `function bit32.rrotate(x, disp)`
+(READ-ONLY) Rotationally bit shifts a number to the right by `disp` places.
+### Parameters:
+- `x: number` - The number to shift.
+- `disp: integer` - Shifts the number to the right by this many places. If `disp` is negative, shifts to the left instead.
+### Returns:
+- `integer` - 
+
+
+<a id="function-bit32-rshift"></a>
+## `function bit32.rshift(x, disp)`
+(READ-ONLY) Logically bit shifts a number to the right by `disp` places.
+### Parameters:
+- `x: number` - The number to shift.
+- `disp: integer` - Shifts the number to the right by this many places. If `disp` is negative, shifts to the left instead.
+### Returns:
+- `integer` - 
+<a id="global-json"></a>
+# global `json`
+<a id="function-json-serialize"></a>
+## `function json.serialize(data)`
+(READ-ONLY) Returns a stringified version of `data`, no matter what it is. The string can then be passed around, and when the code needs it again, running [`json.parse`](#function-json-parse) will restore it.
+### Parameters:
+- `data: any` - The data to stringify.
+### Returns:
+- `string` - The result.
+
+
+<a id="function-json-parse"></a>
+## `function json.parse(str)`
+(READ-ONLY) Transforms a string into data that is manipulable by Lua. The string will almost always be obtained via [`json.serialize`](#function-json-serialize).
+### Parameters:
+- `str: string` - The string to parse.
+### Returns:
+- `any` - The resulting data.
