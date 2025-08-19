@@ -853,7 +853,7 @@
 ## `function actions.GoToObjects(input)`
 (READ-ONLY) Moves the [`song time`](#attribute-state-songtime) to the designated objects.
 ### Parameters:
-- `input: string` - The input string with navigation directions, usually obtained from copying notes in-game.
+- `input: string` - | number The input string with navigation directions, usually obtained from copying notes in-game. If a number is given, this function will set the [`song time`](#attribute-state-songtime) to the given value, in milliseconds.
 ### Returns:
 - `nil`
 
