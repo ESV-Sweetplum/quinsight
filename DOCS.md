@@ -294,7 +294,7 @@
 # global `vector`
 <a id="function-vector-abs"></a>
 ## `function vector.Abs(v)`
-(READ-ONLY) Returns the absolute value of each element of a vector.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Returns the absolute value of each element of a vector.
 ### Parameters:
 - `v: number | Vector2 | Vector3 | Vector4` - The initial vector.
 ### Returns:
@@ -303,7 +303,7 @@
 
 <a id="function-vector-add"></a>
 ## `function vector.Add(v1, v2)`
-(READ-ONLY) Returns the sum of two vectors.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Returns the sum of two vectors.
 ### Parameters:
 - `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
 - `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
@@ -313,7 +313,7 @@
 
 <a id="function-vector-clamp"></a>
 ## `function vector.Clamp(v, min, max)`
-(READ-ONLY) Clamps a vector between two others.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Clamps a vector between two others.
 ### Parameters:
 - `v: number | Vector2 | Vector3 | Vector4` - The vector to clamp.
 - `min: number | Vector2 | Vector3 | Vector4` - The floor of the resultant vector.
@@ -324,7 +324,7 @@
 
 <a id="function-vector-cross"></a>
 ## `function vector.Cross(v1, v2)`
-(READ-ONLY) Takes a cross product between two vectors (only works with [`Vector3`](#class-vector3)).
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Takes a cross product between two vectors (only works with [`Vector3`](#class-vector3)).
 ### Parameters:
 - `v1: Vector3` - The first vector.
 - `v2: Vector3` - The second vector.
@@ -334,7 +334,7 @@
 
 <a id="function-vector-distance"></a>
 ## `function vector.Distance(v1, v2)`
-(READ-ONLY) Finds the distance between two vectors.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Finds the distance between two vectors.
 ### Parameters:
 - `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
 - `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
@@ -344,7 +344,7 @@
 
 <a id="function-vector-distancesquared"></a>
 ## `function vector.DistanceSquared(v1, v2)`
-(READ-ONLY) Finds the distance between two vectors, squared.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Finds the distance between two vectors, squared.
 ### Parameters:
 - `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
 - `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
@@ -354,7 +354,7 @@
 
 <a id="function-vector-divide"></a>
 ## `function vector.Divide(v1, v2)`
-(READ-ONLY) Divides two vectors, termwise.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Divides two vectors, termwise.
 ### Parameters:
 - `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
 - `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
@@ -364,7 +364,7 @@
 
 <a id="function-vector-dot"></a>
 ## `function vector.Dot(v1, v2)`
-(READ-ONLY) Takes the dot product of two vectors; that is, multiplies the two vectors termwise then returns the sum of the resulting terms.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Takes the dot product of two vectors; that is, multiplies the two vectors termwise then returns the sum of the resulting terms.
 ### Parameters:
 - `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
 - `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
@@ -374,7 +374,7 @@
 
 <a id="function-vector-length"></a>
 ## `function vector.Length(v)`
-(READ-ONLY) Determines the literal length of a vector. DOES NOT DETERMINE ITS MAGNITUDE.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Determines the literal length of a vector. DOES NOT DETERMINE ITS MAGNITUDE.
 ### Parameters:
 - `v: number | Vector2 | Vector3 | Vector4` - The vector to measure.
 ### Returns:
@@ -383,7 +383,7 @@
 
 <a id="function-vector-lerp"></a>
 ## `function vector.Lerp(v1, v2, f)`
-(READ-ONLY) Returns a vector that is `(f * 100)%` of the way from travelling between `v1` and `v2`.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Returns a vector that is `(f * 100)%` of the way from travelling between `v1` and `v2`.
 ### Parameters:
 - `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
 - `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
@@ -394,7 +394,7 @@
 
 <a id="function-vector-max"></a>
 ## `function vector.Max(v1, v2)`
-(READ-ONLY) Returns a vector which has the maximum value of both vectors, termwise.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Returns a vector which has the maximum value of both vectors, termwise.
 ### Parameters:
 - `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
 - `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
@@ -404,7 +404,7 @@
 
 <a id="function-vector-min"></a>
 ## `function vector.Min(v1, v2)`
-(READ-ONLY) Returns a vector which has the minimum value of both vectors, termwise.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Returns a vector which has the minimum value of both vectors, termwise.
 ### Parameters:
 - `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
 - `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
@@ -414,7 +414,7 @@
 
 <a id="function-vector-modulo"></a>
 ## `function vector.Modulo(v1, v2)`
-(READ-ONLY) Returns a vector which has the remainder of the first vector divided by the second, termwise.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Returns a vector which has the remainder of the first vector divided by the second, termwise.
 ### Parameters:
 - `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
 - `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
@@ -424,7 +424,7 @@
 
 <a id="function-vector-multiply"></a>
 ## `function vector.Multiply(v1, v2)`
-(READ-ONLY) Multiplies the two vectors termwise and returns the product.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Multiplies the two vectors termwise and returns the product.
 ### Parameters:
 - `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
 - `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
@@ -434,7 +434,7 @@
 
 <a id="function-vector-negate"></a>
 ## `function vector.Negate(v)`
-(READ-ONLY) Negates the given vector termwise.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Negates the given vector termwise.
 ### Parameters:
 - `v: number | Vector2 | Vector3 | Vector4` - The vector to negate.
 ### Returns:
@@ -443,7 +443,7 @@
 
 <a id="function-vector-new"></a>
 ## `function vector.New(s1, s2)`
-(READ-ONLY) Creates a new [`Vector2`](#class-vector2).
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Creates a new [`Vector2`](#class-vector2).
 ### Parameters:
 - `s1: number` - The first element.
 - `s2: number` - The second element.
@@ -453,7 +453,7 @@
 
 <a id="function-vector-new"></a>
 ## `function vector.New(s1, s2, s3)`
-(READ-ONLY) Creates a new [`Vector3`](#class-vector3).
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Creates a new [`Vector3`](#class-vector3).
 ### Parameters:
 - `s1: number` - The first element.
 - `s2: number` - The second element.
@@ -464,7 +464,7 @@
 
 <a id="function-vector-new"></a>
 ## `function vector.New(s1, s2, s3, s4)`
-(READ-ONLY) Creates a new [`Vector4`](#class-vector4).
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Creates a new [`Vector4`](#class-vector4).
 ### Parameters:
 - `s1: number` - The first element.
 - `s2: number` - The second element.
@@ -476,7 +476,7 @@
 
 <a id="function-vector-normalize"></a>
 ## `function vector.Normalize(v)`
-(READ-ONLY) Normalizes the given vector such that it has a magnitude of 1.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Normalizes the given vector such that it has a magnitude of 1.
 ### Parameters:
 - `v: number | Vector2 | Vector3 | Vector4` - The vector to normalize.
 ### Returns:
@@ -485,7 +485,7 @@
 
 <a id="function-vector-one"></a>
 ## `function vector.One(n)`
-(READ-ONLY) Returns a vector of a requested dimension, with all elements being `1`.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Returns a vector of a requested dimension, with all elements being `1`.
 ### Parameters:
 - `n: Vector2 | Vector3 | Vector4` - The dimension of the vector. Assuming a vector is given as the argument, the dimension of the given vector is used.
 ### Returns:
@@ -494,7 +494,7 @@
 
 <a id="function-vector-one"></a>
 ## `function vector.One(n)`
-(READ-ONLY) Returns a [`Vector2`](#class-vector2), with all elements being `1`.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Returns a [`Vector2`](#class-vector2), with all elements being `1`.
 ### Parameters:
 - `n: number` - Any number.
 ### Returns:
@@ -503,7 +503,7 @@
 
 <a id="function-vector-reflect"></a>
 ## `function vector.Reflect(v, norm)`
-(READ-ONLY) Reflects a vector across a surface given by its normal vector and pivot point [`vector.Zero`](#function-vector-zero).
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Reflects a vector across a surface given by its normal vector and pivot point [`vector.Zero`](#function-vector-zero).
 ### Parameters:
 - `v: number | Vector2 | Vector3 | Vector4` - The vector to reflect.
 - `norm: number | Vector2 | Vector3 | Vector4` - The normal vector of the surface in which to reflect `v`.
@@ -513,7 +513,7 @@
 
 <a id="function-vector-remeuclid"></a>
 ## `function vector.RemEuclid(v1, v2)`
-(READ-ONLY) Returns a vector which has the euclidean remainder of the first vector divided by the second, termwise. A euclidean remainder is like a normal remainder, but if the closest normal remainder is negative then the divisor is added to make it positive.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Returns a vector which has the euclidean remainder of the first vector divided by the second, termwise. A euclidean remainder is like a normal remainder, but if the closest normal remainder is negative then the divisor is added to make it positive.
 ### Parameters:
 - `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
 - `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
@@ -523,7 +523,7 @@
 
 <a id="function-vector-squareroot"></a>
 ## `function vector.SquareRoot(v)`
-(READ-ONLY) Square roots the given vector, termwise.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Square roots the given vector, termwise.
 ### Parameters:
 - `v: number | Vector2 | Vector3 | Vector4` - The vector to root.
 ### Returns:
@@ -532,7 +532,7 @@
 
 <a id="function-vector-subtract"></a>
 ## `function vector.Subtract(v1, v2)`
-(READ-ONLY) Returns the difference of two vectors.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Returns the difference of two vectors.
 ### Parameters:
 - `v1: number | Vector2 | Vector3 | Vector4` - The first vector.
 - `v2: number | Vector2 | Vector3 | Vector4` - The second vector.
@@ -542,7 +542,7 @@
 
 <a id="function-vector-table"></a>
 ## `function vector.Table(v)`
-(READ-ONLY) Coerces a [`Vector2`](#class-vector2) to become a numerically-indexed table.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Coerces a [`Vector2`](#class-vector2) to become a numerically-indexed table.
 ### Parameters:
 - `v: Vector2` - The vector to pack.
 ### Returns:
@@ -551,7 +551,7 @@
 
 <a id="function-vector-table"></a>
 ## `function vector.Table(v)`
-(READ-ONLY) Coerces a [`Vector3`](#class-vector3) to become a numerically-indexed table.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Coerces a [`Vector3`](#class-vector3) to become a numerically-indexed table.
 ### Parameters:
 - `v: Vector3` - The vector to pack.
 ### Returns:
@@ -560,7 +560,7 @@
 
 <a id="function-vector-table"></a>
 ## `function vector.Table(v)`
-(READ-ONLY) Coerces a [`Vector4`](#class-vector4) to become a numerically-indexed table.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Coerces a [`Vector4`](#class-vector4) to become a numerically-indexed table.
 ### Parameters:
 - `v: Vector4` - The vector to pack.
 ### Returns:
@@ -569,7 +569,7 @@
 
 <a id="function-vector-unitw"></a>
 ## `function vector.UnitW(dim)`
-(READ-ONLY) Creates a unit vector in the `W` direction with the given dimension.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Creates a unit vector in the `W` direction with the given dimension.
 ### Parameters:
 - `dim: Vector2 | Vector3 | Vector4` - The dimension of the vector to produce. Assuming a vector is given as the argument, the dimension of that vector is used instead.
 ### Returns:
@@ -578,7 +578,7 @@
 
 <a id="function-vector-unitx"></a>
 ## `function vector.UnitX(dim)`
-(READ-ONLY) Creates a unit vector in the `X` direction with the given dimension.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Creates a unit vector in the `X` direction with the given dimension.
 ### Parameters:
 - `dim: Vector2 | Vector3 | Vector4` - The dimension of the vector to produce. Assuming a vector is given as the argument, the dimension of that vector is used instead.
 ### Returns:
@@ -587,7 +587,7 @@
 
 <a id="function-vector-unity"></a>
 ## `function vector.UnitY(dim)`
-(READ-ONLY) Creates a unit vector in the `Y` direction with the given dimension.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Creates a unit vector in the `Y` direction with the given dimension.
 ### Parameters:
 - `dim: Vector2 | Vector3 | Vector4` - The dimension of the vector to produce. Assuming a vector is given as the argument, the dimension of that vector is used instead.
 ### Returns:
@@ -596,7 +596,7 @@
 
 <a id="function-vector-unitz"></a>
 ## `function vector.UnitZ(dim)`
-(READ-ONLY) Creates a unit vector in the `Z` direction with the given dimension.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Creates a unit vector in the `Z` direction with the given dimension.
 ### Parameters:
 - `dim: Vector2 | Vector3 | Vector4` - The dimension of the vector to produce. Assuming a vector is given as the argument, the dimension of that vector is used instead.
 ### Returns:
@@ -605,7 +605,7 @@
 
 <a id="function-vector-zero"></a>
 ## `function vector.Zero(n)`
-(READ-ONLY) Returns a vector of a requested dimension, with all elements being `0`.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Returns a vector of a requested dimension, with all elements being `0`.
 ### Parameters:
 - `n: Vector2 | Vector3 | Vector4` - The dimension of the vector. Assuming a vector is given as the argument, the dimension of the given vector is used.
 ### Returns:
@@ -614,7 +614,7 @@
 
 <a id="function-vector-zero"></a>
 ## `function vector.Zero(n)`
-(READ-ONLY) Returns a [`Vector2`](#class-vector2), with all elements being `0`.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Returns a [`Vector2`](#class-vector2), with all elements being `0`.
 ### Parameters:
 - `n: number` - Any number.
 ### Returns:
@@ -1068,14 +1068,14 @@
 ## `attribute state.SongTime`
 
 ### Type: `number`
-(READ-ONLY)
+(READ-ONLY) (EXISTS BEFORE RUNTIME)
  The current song time in milliseconds.
 
 <a id="attribute-state-selectedhitobjects"></a>
 ## `attribute state.SelectedHitObjects`
 
 ### Type: `HitObject[]`
-(READ-ONLY)
+(READ-ONLY) (EXISTS BEFORE RUNTIME)
  A list of all [hit objects](#class-hitobject) within the current selection.
  If multiple [hit objects](#class-hitobject) are selected at once, the table will be in order of their `StartTime`. If they were selected one at a time using <kbd>Ctrl-Click</kbd>, then the table will be in order of their selection order.
 
@@ -1089,63 +1089,63 @@ The `id`, or name, of the current selected [scroll group](#class-scrollgroup).
 ## `attribute state.SelectedScrollGroup`
 
 ### Type: `ScrollGroup`
-(READ-ONLY)
+(READ-ONLY) (EXISTS BEFORE RUNTIME)
  The current selected [scroll group](#class-scrollgroup).
 
 <a id="attribute-state-currentbookmark"></a>
 ## `attribute state.CurrentBookmark`
 
 ### Type: `Bookmark`
-(READ-ONLY)
+(READ-ONLY) (EXISTS BEFORE RUNTIME)
  The nearest [bookmark](#class-bookmark) before the current `state.SongTime`.
 
 <a id="attribute-state-currentscrollvelocity"></a>
 ## `attribute state.CurrentScrollVelocity`
 
 ### Type: `ScrollVelocity`
-(READ-ONLY)
+(READ-ONLY) (EXISTS BEFORE RUNTIME)
  The nearest [scroll velocity](#class-scrollvelocity) before the current `state.SongTime`.
 
 <a id="attribute-state-currentscrollspeedfactor"></a>
 ## `attribute state.CurrentScrollSpeedFactor`
 
 ### Type: `ScrollSpeedFactor`
-(READ-ONLY)
+(READ-ONLY) (EXISTS BEFORE RUNTIME)
  The nearest [scroll speed factor](#class-scrollspeedfactor) before the current `state.SongTime`.
 
 <a id="attribute-state-currenttimingpoint"></a>
 ## `attribute state.CurrentTimingPoint`
 
 ### Type: `TimingPoint`
-(READ-ONLY)
+(READ-ONLY) (EXISTS BEFORE RUNTIME)
  The nearest [timing point](#class-timingpoint) before the current `state.SongTime`.
 
 <a id="attribute-state-currenteditorlayer"></a>
 ## `attribute state.CurrentEditorLayer`
 
 ### Type: `EditorLayer`
-(READ-ONLY)
+(READ-ONLY) (EXISTS BEFORE RUNTIME)
  The current selected [editor layer](#class-editorlayer).
 
 <a id="attribute-state-currentsnap"></a>
 ## `attribute state.CurrentSnap`
 
 ### Type: `integer`
-(READ-ONLY)
+(READ-ONLY) (EXISTS BEFORE RUNTIME)
  The selected snap's denominator. (e.g. 1/3 snap returns `3`, etc.)
 
 <a id="attribute-state-deltatime"></a>
 ## `attribute state.DeltaTime`
 
 ### Type: `number`
-(READ-ONLY)
+(READ-ONLY) (EXISTS BEFORE RUNTIME)
  The time elapsed between the last frame and the current frame, in milliseconds.
 
 <a id="attribute-state-unixtime"></a>
 ## `attribute state.UnixTime`
 
 ### Type: `integer`
-(READ-ONLY)
+(READ-ONLY) (EXISTS BEFORE RUNTIME)
  The current unix timestamp.
 
 <a id="attribute-state-iswindowhovered"></a>
@@ -1158,19 +1158,19 @@ MUST BE SET MANUALLY - Indicates to the game that the window is hovered.
 ## `attribute state.Scale`
 
 ### Type: `number`
-(READ-ONLY)
+(READ-ONLY) (EXISTS BEFORE RUNTIME)
  The current ImGui scale.
 
 <a id="attribute-state-windowsize"></a>
 ## `attribute state.WindowSize`
 
 ### Type: `Vector2`
-(READ-ONLY)
+(READ-ONLY) (EXISTS BEFORE RUNTIME)
  The size of the Quaver window.
 
 <a id="function-state-setvalue"></a>
 ## `function state.SetValue(key, value)`
-(READ-ONLY) Stores a value that can be retrieved by [`state.GetValue`](#function-state-getvalue). Mainly used to persist data between hot-reloads.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Stores a value that can be retrieved by [`state.GetValue`](#function-state-getvalue). Mainly used to persist data between hot-reloads.
 ### Parameters:
 - `key: string` - The identifier for this particular value.
 - `value: any` - The value to store.
@@ -1180,7 +1180,7 @@ MUST BE SET MANUALLY - Indicates to the game that the window is hovered.
 
 <a id="function-state-getvalue"></a>
 ## `function state.GetValue(key, fallback)`
-(READ-ONLY) Gets a value previously stored by [`state.SetValue`](#function-state-setvalue). If the value doesn't exist, return `fallback` instead. Note that `nil` is considered a value, meaning if you store `nil` using [`state.SetValue`](#function-state-setvalue), then the `fallback` will not be used.
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Gets a value previously stored by [`state.SetValue`](#function-state-setvalue). If the value doesn't exist, return `fallback` instead. Note that `nil` is considered a value, meaning if you store `nil` using [`state.SetValue`](#function-state-setvalue), then the `fallback` will not be used.
 ### Parameters:
 - `key: string` - The identifier for the value set by `state.SetValue`.
 - `fallback?: T` - An optional term to return, if the result is `nil`.
