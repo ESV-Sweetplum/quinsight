@@ -1164,7 +1164,7 @@ MUST BE SET MANUALLY - Indicates to the game that the window is hovered.
 <a id="attribute-state-windowsize"></a>
 ## `attribute state.WindowSize`
 
-### Type: `Vector2`
+### Type: `[number, number]`
 (READ-ONLY) (EXISTS BEFORE RUNTIME)
  The size of the Quaver window.
 

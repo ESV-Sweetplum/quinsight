@@ -1,9 +1,33 @@
 import * as fs from 'fs';
+import * as path from 'path';
+
+const srcPath = (file: string) => path.join('./src', file);
+
+const quaverFile = fs
+    .readFileSync(srcPath('quaver.lua'), 'utf-8')
+    .split('\n')
+    .slice(3)
+    .join('\n');
+
+const imguiFile = fs
+    .readFileSync(srcPath('imgui.lua'), 'utf-8')
+    .split('\n')
+    .slice(3)
+    .join('\n');
+
+const output = `
+---@diagnostic disable: missing-fields, duplicate-doc-field, duplicate-doc-alias, unused-local
+---@meta quinsight-intellisense
+
+${fs.readFileSync(
+    srcPath('preface.lua'),
+    'utf-8'
+)}\n${quaverFile}\n${imguiFile}`.trim();
+
+fs.writeFileSync('./intellisense.lua', output);
 
 const file = fs
-    .readFileSync('./intellisense.lua', 'utf-8')
-    .split('-- END QUAVER')[0]
-    .split('-- STARTING LINE')[1]
+    .readFileSync(srcPath('quaver.lua'), 'utf-8')
     .replaceAll('\r', '')
     .trim()
     .split('\n');
@@ -33,7 +57,7 @@ groups.forEach((group) => {
         enumGroups.push(group.split('\n'));
         return;
     }
-    if (group.includes('.')) {
+    if (group.includes('.') && !group.endsWith('.')) {
         attributeGroups.push(group.split('\n'));
         return;
     }
