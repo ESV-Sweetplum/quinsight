@@ -109,7 +109,7 @@
     - [state.CurrentScrollVelocity](#attribute-state-currentscrollvelocity)
     - [state.CurrentScrollSpeedFactor](#attribute-state-currentscrollspeedfactor)
     - [state.CurrentTimingPoint](#attribute-state-currenttimingpoint)
-    - [state.CurrentEditorLayer](#attribute-state-currenteditorlayer)
+    - [state.CurrentLayer](#attribute-state-currentlayer)
     - [state.CurrentSnap](#attribute-state-currentsnap)
     - [state.DeltaTime](#attribute-state-deltatime)
     - [state.UnixTime](#attribute-state-unixtime)
@@ -240,8 +240,6 @@
  (READ-ONLY) A bitwise mask representing hitsounds.
 #### `[HitObject].EditorLayer: integer`
  (READ-ONLY) The id of the [editor layer](#class-editorlayer) this note is in.
-#### `[HitObject].IsLongNote: boolean`
- (READ-ONLY) `true` if this note is a long note, false otherwise.
 #### `[HitObject].TimingGroup: string`
  (READ-ONLY) The id of the [timing group](#class-scrollgroup) that this note belongs to.
 
@@ -1120,8 +1118,8 @@ The `id`, or name, of the current selected [scroll group](#class-scrollgroup).
 (READ-ONLY) (EXISTS BEFORE RUNTIME)
  The nearest [timing point](#class-timingpoint) before the current `state.SongTime`.
 
-<a id="attribute-state-currenteditorlayer"></a>
-## `attribute state.CurrentEditorLayer`
+<a id="attribute-state-currentlayer"></a>
+## `attribute state.CurrentLayer`
 
 ### Type: `EditorLayer`
 (READ-ONLY) (EXISTS BEFORE RUNTIME)
@@ -1270,6 +1268,7 @@ MUST BE SET MANUALLY - Indicates to the game that the window is hovered.
 (READ-ONLY) Creates an [editor action](#class-editoraction), to later be executed with [`actions.Perform`](#function-actions-perform).
 ### Parameters:
 - `type: EditorActionType` - The type of action to perform.
+- `...: any` - The parameters of the action. Depending on the prefix of the action, different parameters should be passed in:
 ### Returns:
 - `EditorAction` - The requested [editor action](#class-editoraction).
 
