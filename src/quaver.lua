@@ -133,11 +133,11 @@
 ---@operator unm(Vector4): Vector4
 
 ---@class (exact) EditorBpmDetector
----@field HighestConfidenceBpm integer
----@field HighestConfidenceBpmPercentage integer
----@field TotalBpmDetectionIntervals integer
----@field SuggestedOffset integer
----@field Done boolean
+---@field HighestConfidenceBpm integer When done, this is the recommended BPM.
+---@field HighestConfidenceBpmPercentage integer How confident the detector is that the given BPM is correct.
+---@field TotalBpmDetectionIntervals integer The number of BPM detection cycles the detector performed.
+---@field SuggestedOffset integer The suggested offset for the timing point.
+---@field Done boolean Returns true when the detector is finished. When false, all other properties will either be 0 or nil.
 ---@field Bpms { [integer]: integer }
 
 vector = {}
@@ -571,8 +571,9 @@ function actions.GoToObjects(input) end
 function actions.SetHitObjectSelection(hos) end
 
 ---##### (READ-ONLY)
----#### Returns a BPM detector table, with information about suggested BPM and offset.
+---#### Returns a BPM detector table, with information about suggested BPM and offset. If used, set the return value to a global variable to be used later, as this is one of the only methods that is performed asynchronously by the game.
 ---@return EditorBpmDetector
+---@nodiscard
 function actions.DetectBpm() end
 
 ---##### (READ-ONLY)

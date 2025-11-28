@@ -878,7 +878,7 @@
 
 <a id="function-actions-detectbpm"></a>
 ## `function actions.DetectBpm()`
-(READ-ONLY) Returns a BPM detector table, with information about suggested BPM and offset.
+(READ-ONLY) Returns a BPM detector table, with information about suggested BPM and offset. If used, set the return value to a global variable to be used later, as this is one of the only methods that is performed asynchronously by the game.
 ### Parameters:
 - None
 ### Returns:
