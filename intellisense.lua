@@ -168,6 +168,14 @@ For more information, please refer to <https://unlicense.org>
 ---@operator div(Vector4 | number): Vector4
 ---@operator unm(Vector4): Vector4
 
+---@class (exact) EditorBpmDetector
+---@field HighestConfidenceBpm integer
+---@field HighestConfidenceBpmPercentage integer
+---@field TotalBpmDetectionIntervals integer
+---@field SuggestedOffset integer
+---@field Done boolean
+---@field Bpms { [integer]: integer }
+
 vector = {}
 
 ---@generic T : number | Vector2 | Vector3 | Vector4
@@ -597,6 +605,11 @@ function actions.GoToObjects(input) end
 ---#### Sets the [hit object selection](lua://state.SelectedHitObjects) to be the [hit objects](lua://HitObject) passed as the argument.
 ---@param hos HitObject[] The [hit objects](lua://HitObject) to select, which must be obtained via [`map.HitObjects`](lua://map.HitObjects) or something similar.
 function actions.SetHitObjectSelection(hos) end
+
+---##### (READ-ONLY)
+---#### Returns a BPM detector table, with information about suggested BPM and offset.
+---@return EditorBpmDetector
+function actions.DetectBpm() end
 
 ---##### (READ-ONLY)
 ---#### Sets the preview time of the map.

@@ -11,6 +11,7 @@
   - [Vector2](#class-vector2)
   - [Vector3](#class-vector3)
   - [Vector4](#class-vector4)
+  - [EditorBpmDetector](#class-editorbpmdetector)
 ### 2. [Vector Global](#global-vector)
   - Attributes:
     - None
@@ -79,6 +80,7 @@
     - [actions.ResetTimingPoint](#function-actions-resettimingpoint)
     - [actions.GoToObjects](#function-actions-gotoobjects)
     - [actions.SetHitObjectSelection](#function-actions-sethitobjectselection)
+    - [actions.DetectBpm](#function-actions-detectbpm)
     - [actions.SetPreviewTime](#function-actions-setpreviewtime)
     - [actions.CreateLayer](#function-actions-createlayer)
     - [actions.RemoveLayer](#function-actions-removelayer)
@@ -285,6 +287,15 @@
 #### `[Vector4].y: number`
 #### `[Vector4].z: number`
 #### `[Vector4].w: number`
+
+## class `EditorBpmDetector`
+
+#### `[EditorBpmDetector].HighestConfidenceBpm: integer`
+#### `[EditorBpmDetector].HighestConfidenceBpmPercentage: integer`
+#### `[EditorBpmDetector].TotalBpmDetectionIntervals: integer`
+#### `[EditorBpmDetector].SuggestedOffset: integer`
+#### `[EditorBpmDetector].Done: boolean`
+#### `[EditorBpmDetector].Bpms: {`
 
 
 
@@ -863,6 +874,15 @@
 - `hos: HitObject[]` - The [hit objects](#class-hitobject) to select, which must be obtained via [`map.HitObjects`](#attribute-map-hitobjects) or something similar.
 ### Returns:
 - `nil`
+
+
+<a id="function-actions-detectbpm"></a>
+## `function actions.DetectBpm()`
+(READ-ONLY) Returns a BPM detector table, with information about suggested BPM and offset.
+### Parameters:
+- None
+### Returns:
+- `EditorBpmDetector` - 
 
 
 <a id="function-actions-setpreviewtime"></a>
