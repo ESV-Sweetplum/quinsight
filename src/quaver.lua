@@ -1186,7 +1186,7 @@ function print(...) end
 function print(notificationType, ...) end
 
 ---@enum EditorActionType
-action_type  = {
+action_type    = {
     None = -1,
     PlaceHitObject = 0,
     RemoveHitObject = 1,
@@ -1249,8 +1249,14 @@ action_type  = {
     RemoveScrollSpeedFactorBatch = 58
 }
 
+---@enum HitObjectType
+hitobject_type = {
+    Normal = 0,
+    Mine = 1
+}
+
 ---@enum Key
-keys         = {
+keys           = {
     None = 0,                  -- Reserved.
     Back = 8,                  -- BACKSPACE key.
     Tab = 9,                   -- TAB key.
@@ -1422,7 +1428,7 @@ keys         = {
 }
 
 ---@enum HistoryType
-history_type = {
+history_type   = {
     New = 0,
     Redo = 1,
     Undo = 2,
