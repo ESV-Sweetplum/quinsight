@@ -82,9 +82,12 @@ classGroups.forEach((cls: string[]) => {
         if (!idx) return;
         if (/---@field/.test(line)) {
             const fieldName = line.split(' ')[1];
-            const fieldType = line.includes('fun(')
-                ? line.match(/fun\([a-zA-Z0-9,\.: ]*\): [a-zA-Z]+/)[0]
-                : line.split(' ')[2];
+            const fieldType =
+                line.includes('{') && line.includes('}')
+                    ? line.match(/\{ *\[[a-zA-Z0-9_]+\]: *[a-zA-Z0-9_]+ *\}/)[0]
+                    : line.includes('fun(')
+                    ? line.match(/fun\([a-zA-Z0-9,\.: ]*\): [a-zA-Z]+/)[0]
+                    : line.split(' ')[2];
 
             let fieldDesc = '';
             let searchIndex = idx - 1;

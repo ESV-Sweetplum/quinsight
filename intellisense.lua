@@ -955,7 +955,7 @@ map.ScrollSpeedFactors    = {} ---@type ScrollSpeedFactor[]
 
 ---##### (READ-ONLY)
 ---#### A table of all [timing groups](lua://ScrollGroup) in the map, where the keys are the identifiers of the scroll group.
-map.TimingGroups          = {} ---@type { [string]: ScrollGroup}
+map.TimingGroups          = {} ---@type { [string]: ScrollGroup }
 
 ---##### (READ-ONLY)
 ---#### The default [scroll group](lua://ScrollGroup).

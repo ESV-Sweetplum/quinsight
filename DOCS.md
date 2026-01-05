@@ -295,7 +295,7 @@
 #### `[EditorBpmDetector].TotalBpmDetectionIntervals: integer`
 #### `[EditorBpmDetector].SuggestedOffset: integer`
 #### `[EditorBpmDetector].Done: boolean`
-#### `[EditorBpmDetector].Bpms: {`
+#### `[EditorBpmDetector].Bpms: { [integer]: integer }`
 
 
 
@@ -1388,7 +1388,7 @@ MUST BE SET MANUALLY - Indicates to the game that the window is hovered.
 <a id="attribute-map-timinggroups"></a>
 ## `attribute map.TimingGroups`
 
-### Type: `{ [string]: ScrollGroup}`
+### Type: `{ [string]: ScrollGroup }`
 (READ-ONLY)
  A table of all [timing groups](#class-scrollgroup) in the map, where the keys are the identifiers of the scroll group.
 
