@@ -6,7 +6,7 @@ const srcPath = (file: string) => path.join('./src', file);
 const quaverFile = fs
     .readFileSync(srcPath('quaver.lua'), 'utf-8')
     .split('\n')
-    .slice(3)
+    .slice(6)
     .join('\n');
 
 const imguiFile = fs
@@ -30,7 +30,8 @@ const file = fs
     .readFileSync(srcPath('quaver.lua'), 'utf-8')
     .replaceAll('\r', '')
     .trim()
-    .split('\n');
+    .split('\n')
+    .slice(6);
 
 const globals = [];
 const groups = file.join('\n').split('\n\n');

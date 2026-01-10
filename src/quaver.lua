@@ -1,6 +1,9 @@
 ---@diagnostic disable: missing-fields, duplicate-doc-field, duplicate-doc-alias, unused-local
 ---@meta quaver-intellisense
 
+ALLOWED_CHARACTERS =
+"!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+
 ---@alias NoteLane 1|2|3|4|5|6|7|8|9|10 The lane of a particular note.
 ---@alias SnapNumber 1|2|3|4|5|6|8|12|16 The denominator of the corresponding snap.
 ---@alias HitSounds userdata A bitwise mask defining the hitsounds, which when converted to base 2, displays as abcd. `a` dictates clap, `b` dictates finish, `c` dictates whistle, and `d` is irrelevant.
@@ -797,9 +800,10 @@ function utils.CreateScrollSpeedFactor(startTime, multiplier) end
 ---@param endTime? integer If given and non-zero, the note becomes a long note. This parameter determines when the long note will end.
 ---@param hitsounds? HitSounds The hitsounds that should be applied to the note.
 ---@param editorLayer? integer The index of the [editor layer](lua://EditorLayer) that this note should be added to.
+---@param type? HitObjectType The type of the note (normal or mine).
 ---@return HitObject ho The requested note.
 ---@nodiscard
-function utils.CreateHitObject(startTime, lane, endTime, hitsounds, editorLayer) end
+function utils.CreateHitObject(startTime, lane, endTime, hitsounds, editorLayer, type) end
 
 ---##### (READ-ONLY)
 ---#### Creates a [timing point](lua://TimingPoint), to later be placed into an [`EditorAction`](lua://utils.CreateEditorAction) and executed.

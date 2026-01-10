@@ -244,6 +244,8 @@
  (READ-ONLY) The id of the [editor layer](#class-editorlayer) this note is in.
 #### `[HitObject].TimingGroup: string`
  (READ-ONLY) The id of the [timing group](#class-scrollgroup) that this note belongs to.
+#### `[HitObject].Type: HitObjectType`
+ (READ-ONLY) The type of note - returns 0 if normal, returns 1 if mine.
 
 ## class `TimingPoint`
 
