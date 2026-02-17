@@ -1229,7 +1229,7 @@ MUST BE SET MANUALLY - Indicates to the game that the window is hovered.
 
 
 <a id="function-utils-createhitobject"></a>
-## `function utils.CreateHitObject(startTime, lane, endTime, hitsounds, editorLayer)`
+## `function utils.CreateHitObject(startTime, lane, endTime, hitsounds, editorLayer, type)`
 (READ-ONLY) Creates a [hit object](#class-hitobject), to later be placed into an [`EditorAction`](#function-utils-createeditoraction) and executed.
 ### Parameters:
 - `startTime: integer` - The time to create the note, in milliseconds.
@@ -1237,6 +1237,7 @@ MUST BE SET MANUALLY - Indicates to the game that the window is hovered.
 - `endTime?: integer` - If given and non-zero, the note becomes a long note. This parameter determines when the long note will end.
 - `hitsounds?: HitSounds` - The hitsounds that should be applied to the note.
 - `editorLayer?: integer` - The index of the [editor layer](#class-editorlayer) that this note should be added to.
+- `type?: HitObjectType` - The type of the note (normal or mine).
 ### Returns:
 - `HitObject` - The requested note.
 
