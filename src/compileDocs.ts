@@ -4,8 +4,10 @@ import * as path from 'path';
 const srcPath = (file: string) => path.join('./src', file);
 
 const quaverFile = fs.readFileSync(srcPath('quaver.lua'), 'utf-8').split('\n').slice(6).join('\n');
-
 const imguiFile = fs.readFileSync(srcPath('imgui.lua'), 'utf-8').split('\n').slice(3).join('\n');
+
+const packedQuaverFile = fs.readFileSync(srcPath('packedVer/quaver.lua'), 'utf-8').split('\n').slice(6).join('\n');
+const packedImguiFile = fs.readFileSync(srcPath('packedVer/imgui.lua'), 'utf-8').split('\n').slice(3).join('\n');
 
 const output = `
 ---@diagnostic disable: missing-fields, duplicate-doc-field, duplicate-doc-alias, unused-local
@@ -14,6 +16,14 @@ const output = `
 ${fs.readFileSync(srcPath('preface.lua'), 'utf-8')}\n${quaverFile}\n${imguiFile}`.trim();
 
 fs.writeFileSync('./intellisense.lua', output);
+
+const packedOutput = `
+---@diagnostic disable: missing-fields, duplicate-doc-field, duplicate-doc-alias, unused-local
+---@meta quinsight-intellisense-packed
+
+${fs.readFileSync(srcPath('preface.lua'), 'utf-8')}\n${packedQuaverFile}\n${packedImguiFile}`.trim();
+
+fs.writeFileSync('./intellisensePacked.lua', packedOutput);
 
 const file = fs.readFileSync(srcPath('quaver.lua'), 'utf-8').replaceAll('\r', '').trim().split('\n').slice(6);
 
