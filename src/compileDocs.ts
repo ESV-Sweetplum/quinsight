@@ -27,12 +27,12 @@ fs.writeFileSync('./intellisensePacked.lua', packedOutput);
 
 const file = fs.readFileSync(srcPath('quaver.lua'), 'utf-8').replaceAll('\r', '').trim().split('\n').slice(6);
 
-const globals = [];
+const globals: string[] = [];
 const groups = file.join('\n').split('\n\n');
-const classGroups = [];
-const functionGroups = [];
-const enumGroups = [];
-const attributeGroups = [];
+const classGroups: string[][] = [];
+const functionGroups: string[][] = [];
+const enumGroups: string[][] = [];
+const attributeGroups: string[][] = [];
 
 file.forEach(line => {
     if (/^[a-z0-9]+ *= \{\}$/.test(line)) globals.push(line.split(' ')[0]);
@@ -58,8 +58,8 @@ groups.forEach(group => {
     }
 });
 
-const tocDict = {};
-const dict = globals.reduce((obj, global) => {
+const tocDict: Record<string, { attributes: string[]; functions: string[] }> = {};
+const dict = globals.reduce((obj: Record<string, string[]>, global) => {
     obj[global] = [];
     tocDict[global] = { attributes: [], functions: [] };
     return obj;
@@ -67,21 +67,21 @@ const dict = globals.reduce((obj, global) => {
 
 let outputStr = '';
 
-const classNames = [];
+const classNames: string[] = [];
 
 classGroups.forEach((cls: string[]) => {
     const className = cls[0].split(' (exact) ')[1];
     classNames.push(className);
-    const fields = [];
+    const fields: { fieldName: string; fieldType: string; fieldDesc: string }[] = [];
     cls.forEach((line: string, idx: number) => {
-        if (!idx) return;
+        if (!idx || !line) return;
         if (/---@field/.test(line)) {
             const fieldName = line.split(' ')[1];
             const fieldType =
                 line.includes('{') && line.includes('}')
-                    ? line.match(/\{ *\[[a-zA-Z0-9_]+\]: *[a-zA-Z0-9_]+ *\}/)[0]
+                    ? (line.match(/\{ *\[[a-zA-Z0-9_]+\]: *[a-zA-Z0-9_]+ *\}/) ?? [''])[0]
                     : line.includes('fun(')
-                      ? line.match(/fun\([a-zA-Z0-9,\.: ]*\): [a-zA-Z]+/)[0]
+                      ? (line.match(/fun\([a-zA-Z0-9,\.: ]*\): [a-zA-Z]+/) ?? [''])[0]
                       : line.split(' ')[2];
 
             let fieldDesc = '';
@@ -127,7 +127,7 @@ attributeGroups.forEach((attr: string[]) => {
     );
 });
 
-const functionNames = [];
+const functionNames: string[] = [];
 
 functionGroups.forEach((fn: string[]) => {
     const lastLine = fn[fn.length - 1];
@@ -184,7 +184,7 @@ let tableOfContents = `# Table of Contents:\n### 1. Classes:\n${classNames
     .map(cls => `  - [${cls}](#class-${cls.toLowerCase()})`)
     .join('\n')}\n${Object.entries(tocDict)
     .map(
-        ([global, obj]: any, idx) =>
+        ([global, obj], idx) =>
             `### ${idx + 2}. [${global.charAt(0).toUpperCase()}${global.slice(
                 1,
             )} Global](#global-${global})\n  - Attributes:\n${

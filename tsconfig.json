@@ -1,8 +1,12 @@
 {
     "compilerOptions": {
-      "target": "ES2022",
-      "module": "commonjs",
-      "outDir": "dist",
-      "lib": ["ES2023"]
-    }
-}  
+        "module": "commonjs",
+        "rootDir": "src",
+        "outDir": "dist",
+        "strict": true,
+        "types": ["node"],
+        "esModuleInterop": true,
+        "lib": ["ES2024"],
+        "target": "es6"
+    },
+}
