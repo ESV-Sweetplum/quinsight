@@ -80,6 +80,7 @@
     - [actions.ResetTimingPoint](#function-actions-resettimingpoint)
     - [actions.GoToObjects](#function-actions-gotoobjects)
     - [actions.SetHitObjectSelection](#function-actions-sethitobjectselection)
+    - [actions.SetViewColoring](#function-actions-setviewcoloring)
     - [actions.DetectBpm](#function-actions-detectbpm)
     - [actions.SetPreviewTime](#function-actions-setpreviewtime)
     - [actions.CreateLayer](#function-actions-createlayer)
@@ -878,6 +879,15 @@
 - `nil`
 
 
+<a id="function-actions-setviewcoloring"></a>
+## `function actions.SetViewColoring(mode)`
+(READ-ONLY) Changes the [hit object coloring mode](#attribute-state-selectedhitobjects) to be the [mode](#class-coloringmode) passed as the argument.
+### Parameters:
+- `mode: ColoringMode` - The [mode](#class-hitobject) to use.
+### Returns:
+- `nil`
+
+
 <a id="function-actions-detectbpm"></a>
 ## `function actions.DetectBpm()`
 (READ-ONLY) Returns a BPM detector table, with information about suggested BPM and offset. If used, set the return value to a global variable to be used later, as this is one of the only methods that is performed asynchronously by the game.
@@ -1229,7 +1239,7 @@ MUST BE SET MANUALLY - Indicates to the game that the window is hovered.
 
 
 <a id="function-utils-createhitobject"></a>
-## `function utils.CreateHitObject(startTime, lane, endTime, hitsounds, editorLayer, type)`
+## `function utils.CreateHitObject(startTime, lane, endTime, hitsounds, editorLayer, type, timingGroup)`
 (READ-ONLY) Creates a [hit object](#class-hitobject), to later be placed into an [`EditorAction`](#function-utils-createeditoraction) and executed.
 ### Parameters:
 - `startTime: integer` - The time to create the note, in milliseconds.
@@ -1238,6 +1248,7 @@ MUST BE SET MANUALLY - Indicates to the game that the window is hovered.
 - `hitsounds?: HitSounds` - The hitsounds that should be applied to the note.
 - `editorLayer?: integer` - The index of the [editor layer](#class-editorlayer) that this note should be added to.
 - `type?: HitObjectType` - The type of the note (normal or mine).
+- `timingGroup: ScrollGroup` - The timing group to assign the note to.
 ### Returns:
 - `HitObject` - The requested note.
 
