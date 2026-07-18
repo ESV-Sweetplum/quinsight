@@ -15,6 +15,6 @@
   "author": "ESV-Sweetplum",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^24.0.12"
+    "@types/node": "^26.1.1"
   }
 }

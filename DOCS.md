@@ -237,7 +237,7 @@
  (READ-ONLY) The time the note is present.
 #### `[HitObject].Lane: NoteLane`
  (READ-ONLY) The lane the note is in.
-#### `[HitObject].EndTime: number`
+#### `[HitObject].EndTime: integer`
  (READ-ONLY) The time the long note ends. If this note is not a long note, this value is 0.
 #### `[HitObject].HitSound: HitSounds`
  (READ-ONLY) A bitwise mask representing hitsounds.
