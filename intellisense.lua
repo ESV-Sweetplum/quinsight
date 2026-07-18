@@ -97,7 +97,7 @@ For more information, please refer to <https://unlicense.org>
 ---@field Lane NoteLane
 ---##### (READ-ONLY)
 ---#### The time the long note ends. If this note is not a long note, this value is 0.
----@field EndTime number
+---@field EndTime integer
 ---##### (READ-ONLY)
 ---#### A bitwise mask representing hitsounds.
 ---@field HitSound HitSounds
