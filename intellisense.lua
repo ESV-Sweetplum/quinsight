@@ -1301,8 +1301,8 @@ hitobject_type = {
     Mine = 1,
 }
 
----@enum ColoringMode
-coloring_mode  = {
+---@enum ColoringType
+coloring_type  = {
     None = 0,
     Layer = 1,
     TimingGroup = 2,
