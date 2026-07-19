@@ -881,9 +881,9 @@
 
 <a id="function-actions-setviewcoloring"></a>
 ## `function actions.SetViewColoring(mode)`
-(READ-ONLY) Changes the [hit object coloring mode](#attribute-state-selectedhitobjects) to be the [mode](#class-coloringmode) passed as the argument.
+(READ-ONLY) Changes the [hit object coloring mode](#attribute-state-selectedhitobjects) to be the [mode](#class-coloringtype) passed as the argument.
 ### Parameters:
-- `mode: ColoringMode` - The [mode](#class-hitobject) to use.
+- `mode: ColoringType` - The [mode](#class-hitobject) to use.
 ### Returns:
 - `nil`
 
