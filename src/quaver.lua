@@ -578,7 +578,7 @@ function actions.SetHitObjectSelection(hos) end
 
 ---##### (READ-ONLY)
 ---#### Changes the [hit object coloring mode](lua://state.SelectedHitObjects) to be the [mode](lua://ColoringType) passed as the argument.
----@param mode ColoringType The [mode](lua://HitObject) to use.
+---@param mode ColoringType The [mode](lua://ColoringType) to use.
 function actions.SetViewColoring(mode) end
 
 ---##### (READ-ONLY)
