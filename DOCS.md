@@ -56,6 +56,8 @@
   - Functions:
     - [actions.Perform](#function-actions-perform)
     - [actions.PerformBatch](#function-actions-performbatch)
+    - [actions.Perform](#function-actions-perform)
+    - [actions.PerformBatch](#function-actions-performbatch)
     - [actions.Undo](#function-actions-undo)
     - [actions.Redo](#function-actions-redo)
     - [actions.PlaceHitObject](#function-actions-placehitobject)
@@ -645,6 +647,24 @@
 <a id="function-actions-performbatch"></a>
 ## `function actions.PerformBatch(actionList)`
 (READ-ONLY) Performs a given set of [editor actions](#class-editoraction).
+### Parameters:
+- `actionList: EditorAction[]` - The [editor actions](#class-editoraction) to perform.
+### Returns:
+- `nil`
+
+
+<a id="function-actions-perform"></a>
+## `function actions.Perform(action)`
+(READ-ONLY) Performs a given [editor action](#class-editoraction), without changing the undo/redo stack. Note that this makes them not undoable, and is only useful for a specific scenario where you want to write data to a map that runs a separate updater function regardless of the history type.
+### Parameters:
+- `action: EditorAction` - The [editor action](#class-editoraction) to perform.
+### Returns:
+- `nil`
+
+
+<a id="function-actions-performbatch"></a>
+## `function actions.PerformBatch(actionList)`
+(READ-ONLY) Performs a given set of [editor actions](#class-editoraction), without changing the undo/redo stack. Note that this makes them not undoable, and is only useful for a specific scenario where you want to write data to a map that runs a separate updater function regardless of the history type.
 ### Parameters:
 - `actionList: EditorAction[]` - The [editor actions](#class-editoraction) to perform.
 ### Returns:

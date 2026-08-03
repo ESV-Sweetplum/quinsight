@@ -447,6 +447,16 @@ function actions.Perform(action) end
 function actions.PerformBatch(actionList) end
 
 ---##### (READ-ONLY)
+---#### Performs a given [editor action](lua://EditorAction), without changing the undo/redo stack. Note that this makes them not undoable, and is only useful for a specific scenario where you want to write data to a map that runs a separate updater function regardless of the history type.
+---@param action EditorAction The [editor action](lua://EditorAction) to perform.
+function actions.Perform(action) end
+
+---##### (READ-ONLY)
+---#### Performs a given set of [editor actions](lua://EditorAction), without changing the undo/redo stack. Note that this makes them not undoable, and is only useful for a specific scenario where you want to write data to a map that runs a separate updater function regardless of the history type.
+---@param actionList EditorAction[] The [editor actions](lua://EditorAction) to perform.
+function actions.PerformBatch(actionList) end
+
+---##### (READ-ONLY)
 ---#### Undoes the most recent [editor action](lua://EditorAction).
 function actions.Undo() end
 
@@ -1452,4 +1462,5 @@ history_type   = {
     New = 0,
     Redo = 1,
     Undo = 2,
+    Silent = 3,
 }
