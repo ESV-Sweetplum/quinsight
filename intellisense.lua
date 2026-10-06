@@ -87,6 +87,9 @@ For more information, please refer to <https://unlicense.org>
 ---##### (READ-ONLY)
 ---#### The contents of the [bookmark](lua://Bookmark).
 ---@field Note string
+---##### (READ-ONLY)
+---#### The color of the [bookmark](lua://Bookmark).
+---@field ColorRgb string
 
 ---@class (exact) HitObject
 ---##### (READ-ONLY)
@@ -480,14 +483,14 @@ function actions.Perform(action) end
 function actions.PerformBatch(actionList) end
 
 ---##### (READ-ONLY)
----#### Performs a given [editor action](lua://EditorAction), without changing the undo/redo stack. Note that this makes them not undoable, and is only useful for a specific scenario where you want to write data to a map that runs a separate updater function regardless of the history type.
+---#### Performs a given [editor action](lua://EditorAction), without pushing the action to the undo stack. This action cannot be undone by the user and, if desired, must be done through Lua.
 ---@param action EditorAction The [editor action](lua://EditorAction) to perform.
-function actions.Perform(action) end
+function actions.PerformSilently(action) end
 
 ---##### (READ-ONLY)
----#### Performs a given set of [editor actions](lua://EditorAction), without changing the undo/redo stack. Note that this makes them not undoable, and is only useful for a specific scenario where you want to write data to a map that runs a separate updater function regardless of the history type.
+---#### Performs a given set of [editor actions](lua://EditorAction), without pushing the action to the undo stack. These actions cannot be undone by the user and, if desired, must be done through Lua.
 ---@param actionList EditorAction[] The [editor actions](lua://EditorAction) to perform.
-function actions.PerformBatch(actionList) end
+function actions.PerformBatchSilently(actionList) end
 
 ---##### (READ-ONLY)
 ---#### Undoes the most recent [editor action](lua://EditorAction).
@@ -610,6 +613,14 @@ function actions.ChangeTimingPointBpmBatch(tps, newBpm) end
 function actions.ResetTimingPoint(tp) end
 
 ---##### (READ-ONLY)
+---#### Starts playing the track.
+function actions.StartPlayback() end
+
+---##### (READ-ONLY)
+---#### Stops playing the track.
+function actions.StopPlayback() end
+
+---##### (READ-ONLY)
 ---#### Moves the [`song time`](lua://state.SongTime) to the designated objects.
 ---@param input string | number The input string with navigation directions, usually obtained from copying notes in-game. If a number is given, this function will set the [`song time`](lua://state.SongTime) to the given value, in milliseconds.
 function actions.GoToObjects(input) end
@@ -657,6 +668,18 @@ function actions.RenameLayer(layer, newName) end
 ---@param layer EditorLayer The [editor layer](lua://EditorLayer) to move the [hit objects](lua://HitObject) to, which must be obtained via [`map.EditorLayers`](lua://map.EditorLayers) or something similar.
 ---@param hos HitObject[] The [hit objects](lua://HitObject) to move, which must be obtained via [`map.HitObjects`](lua://map.HitObjects) or something similar.
 function actions.MoveHitObjectsToLayer(layer, hos) end
+
+---##### (READ-ONLY)
+---#### Moves the given [editor layer](lua://EditorLayer) to a specific index (shown in the Editor Layer panel).
+---@param layer EditorLayer The [editor layer](lua://EditorLayer) to move, which must be obtained via [`map.EditorLayers`](lua://map.EditorLayers) or something similar.
+---@param index integer The new index of the [editor layer](lua://EditorLayer).
+function actions.MoveLayer(layer, index) end
+
+---##### (READ-ONLY)
+---#### Moves the [editor layer](lua://EditorLayer) at the given index to another specific index (shown in the Editor Layer panel).
+---@param fromIndex integer The old index of the [editor layer](lua://EditorLayer).
+---@param toIndex integer The new index of the [editor layer](lua://EditorLayer).
+function actions.MoveLayer(fromIndex, toIndex) end
 
 ---##### (READ-ONLY)
 ---#### Changes the color of the given [editor layer](lua://EditorLayer).
@@ -754,6 +777,10 @@ state                          = {}
 state.SongTime                 = 0.0 ---@type number
 
 ---##### (READ-ONLY) (EXISTS BEFORE RUNTIME)
+---#### Returns true if the track is playing.
+state.IsPlaying                = false ---@type boolean
+
+---##### (READ-ONLY) (EXISTS BEFORE RUNTIME)
 ---#### A list of all [hit objects](lua://HitObject) within the current selection.
 ---#### If multiple [hit objects](lua://HitObject) are selected at once, the table will be in order of their `StartTime`. If they were selected one at a time using <kbd>Ctrl-Click</kbd>, then the table will be in order of their selection order.
 state.SelectedHitObjects       = {} ---@type HitObject[]
@@ -822,6 +849,10 @@ function state.SetValue(key, value) end
 ---@return T value The stored value.
 ---@nodiscard
 function state.GetValue(key, fallback) end
+
+---##### (READ-ONLY) (EXISTS BEFORE RUNTIME)
+---#### Closes the plugin on the Quaver end. The only way to reopen it is to use the Plugins tab in the game itself.
+function state.ClosePlugin() end
 
 utils = {}
 
@@ -1102,6 +1133,11 @@ function map.GetTimingPointLength(tp) end
 ---@nodiscard
 function map.GetNearestSnapTimeFromTime(forwards, snap, time) end
 
+---Returns the index of the given layer (1-indexed, order shown in the Editor Layers panel).
+---@param layer EditorLayer
+---@return integer
+function map.GetEditorLayerIndex(layer) end
+
 bit32 = {}
 
 ---##### (READ-ONLY)
@@ -1258,51 +1294,52 @@ action_type    = {
     RemoveLayer = 11,
     RenameLayer = 12,
     MoveToLayer = 13,
-    ColorLayer = 14,
-    ToggleLayerVisibility = 15,
-    AddScrollVelocity = 16,
-    RemoveScrollVelocity = 17,
-    AddScrollVelocityBatch = 18,
-    RemoveScrollVelocityBatch = 19,
-    AddTimingPoint = 20,
-    RemoveTimingPoint = 21,
-    AddTimingPointBatch = 22,
-    RemoveTimingPointBatch = 23,
-    ChangePreviewTime = 24,
-    ChangeTimingPointOffset = 25,
-    ChangeTimingPointBpm = 26,
-    ChangeTimingPointSignature = 27,
-    ChangeTimingPointHidden = 28,
-    ResetTimingPoint = 29,
-    ChangeTimingPointBpmBatch = 30,
-    ChangeTimingPointSignatureBatch = 31,
-    ChangeTimingPointOffsetBatch = 32,
-    ChangeScrollVelocityOffsetBatch = 33,
-    ChangeScrollVelocityMultiplierBatch = 34,
-    ApplyOffset = 35,
-    ResnapHitObjects = 36,
-    Batch = 37,
-    ReverseHitObjects = 38,
-    AddBookmark = 39,
-    AddBookmarkBatch = 40,
-    EditBookmark = 41,
-    RemoveBookmark = 42,
-    RemoveBookmarkBatch = 43,
-    ChangeBookmarkOffsetBatch = 44,
-    CreateTimingGroup = 45,
-    RemoveTimingGroup = 46,
-    RenameTimingGroup = 47,
-    MoveObjectsToTimingGroup = 48,
-    ColorTimingGroup = 49,
-    AddTimingGroupBatch = 50,
-    RemoveTimingGroupBatch = 51,
-    AddScrollSpeedFactor = 52,
-    AddScrollSpeedFactorBatch = 53,
-    ChangeScrollSpeedFactorMultiplierBatch = 54,
-    ChangeScrollSpeedFactorLaneMaskBatch = 55,
-    ChangeScrollSpeedFactorOffsetBatch = 56,
-    RemoveScrollSpeedFactor = 57,
-    RemoveScrollSpeedFactorBatch = 58,
+    MoveLayer = 14,
+    ColorLayer = 15,
+    ToggleLayerVisibility = 16,
+    AddScrollVelocity = 17,
+    RemoveScrollVelocity = 18,
+    AddScrollVelocityBatch = 19,
+    RemoveScrollVelocityBatch = 20,
+    AddTimingPoint = 21,
+    RemoveTimingPoint = 22,
+    AddTimingPointBatch = 23,
+    RemoveTimingPointBatch = 24,
+    ChangePreviewTime = 25,
+    ChangeTimingPointOffset = 26,
+    ChangeTimingPointBpm = 27,
+    ChangeTimingPointSignature = 28,
+    ChangeTimingPointHidden = 29,
+    ResetTimingPoint = 30,
+    ChangeTimingPointBpmBatch = 31,
+    ChangeTimingPointSignatureBatch = 32,
+    ChangeTimingPointOffsetBatch = 33,
+    ChangeScrollVelocityOffsetBatch = 34,
+    ChangeScrollVelocityMultiplierBatch = 35,
+    ApplyOffset = 36,
+    ResnapHitObjects = 37,
+    Batch = 38,
+    ReverseHitObjects = 39,
+    AddBookmark = 40,
+    AddBookmarkBatch = 41,
+    EditBookmark = 42,
+    RemoveBookmark = 43,
+    RemoveBookmarkBatch = 44,
+    ChangeBookmarkOffsetBatch = 45,
+    CreateTimingGroup = 46,
+    RemoveTimingGroup = 47,
+    RenameTimingGroup = 48,
+    MoveObjectsToTimingGroup = 49,
+    ColorTimingGroup = 50,
+    AddTimingGroupBatch = 51,
+    RemoveTimingGroupBatch = 52,
+    AddScrollSpeedFactor = 53,
+    AddScrollSpeedFactorBatch = 54,
+    ChangeScrollSpeedFactorMultiplierBatch = 55,
+    ChangeScrollSpeedFactorLaneMaskBatch = 56,
+    ChangeScrollSpeedFactorOffsetBatch = 57,
+    RemoveScrollSpeedFactor = 58,
+    RemoveScrollSpeedFactorBatch = 59,
 }
 
 ---@enum HitObjectType
@@ -1501,7 +1538,7 @@ history_type   = {
 ---@alias fmt string | number | boolean | table
 ---@class Type
 
-imgui          = {}
+imgui = {}
 
 ---##### (READ-ONLY)
 ---@param type string
