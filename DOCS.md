@@ -56,8 +56,8 @@
   - Functions:
     - [actions.Perform](#function-actions-perform)
     - [actions.PerformBatch](#function-actions-performbatch)
-    - [actions.Perform](#function-actions-perform)
-    - [actions.PerformBatch](#function-actions-performbatch)
+    - [actions.PerformSilently](#function-actions-performsilently)
+    - [actions.PerformBatchSilently](#function-actions-performbatchsilently)
     - [actions.Undo](#function-actions-undo)
     - [actions.Redo](#function-actions-redo)
     - [actions.PlaceHitObject](#function-actions-placehitobject)
@@ -80,6 +80,8 @@
     - [actions.ChangeTimingPointOffsetBatch](#function-actions-changetimingpointoffsetbatch)
     - [actions.ChangeTimingPointBpmBatch](#function-actions-changetimingpointbpmbatch)
     - [actions.ResetTimingPoint](#function-actions-resettimingpoint)
+    - [actions.StartPlayback](#function-actions-startplayback)
+    - [actions.StopPlayback](#function-actions-stopplayback)
     - [actions.GoToObjects](#function-actions-gotoobjects)
     - [actions.SetHitObjectSelection](#function-actions-sethitobjectselection)
     - [actions.SetViewColoring](#function-actions-setviewcoloring)
@@ -89,6 +91,8 @@
     - [actions.RemoveLayer](#function-actions-removelayer)
     - [actions.RenameLayer](#function-actions-renamelayer)
     - [actions.MoveHitObjectsToLayer](#function-actions-movehitobjectstolayer)
+    - [actions.MoveLayer](#function-actions-movelayer)
+    - [actions.MoveLayer](#function-actions-movelayer)
     - [actions.ChangeLayerColor](#function-actions-changelayercolor)
     - [actions.ToggleLayerVisibility](#function-actions-togglelayervisibility)
     - [actions.ResnapNotes](#function-actions-resnapnotes)
@@ -107,6 +111,7 @@
 ### 4. [State Global](#global-state)
   - Attributes:
     - [state.SongTime](#attribute-state-songtime)
+    - [state.IsPlaying](#attribute-state-isplaying)
     - [state.SelectedHitObjects](#attribute-state-selectedhitobjects)
     - [state.SelectedScrollGroupId](#attribute-state-selectedscrollgroupid)
     - [state.SelectedScrollGroup](#attribute-state-selectedscrollgroup)
@@ -124,6 +129,7 @@
   - Functions:
     - [state.SetValue](#function-state-setvalue)
     - [state.GetValue](#function-state-getvalue)
+    - [state.ClosePlugin](#function-state-closeplugin)
 ### 5. [Utils Global](#global-utils)
   - Attributes:
     - None
@@ -173,6 +179,7 @@
     - [map.GetBookmarkAt](#function-map-getbookmarkat)
     - [map.GetTimingPointLength](#function-map-gettimingpointlength)
     - [map.GetNearestSnapTimeFromTime](#function-map-getnearestsnaptimefromtime)
+    - [map.GetEditorLayerIndex](#function-map-geteditorlayerindex)
 ### 7. [Bit32 Global](#global-bit32)
   - Attributes:
     - None
@@ -232,6 +239,8 @@
  (READ-ONLY) The time the [bookmark](#class-bookmark) is attached to.
 #### `[Bookmark].Note: string`
  (READ-ONLY) The contents of the [bookmark](#class-bookmark).
+#### `[Bookmark].ColorRgb: string`
+ (READ-ONLY) The color of the [bookmark](#class-bookmark).
 
 ## class `HitObject`
 
@@ -653,18 +662,18 @@
 - `nil`
 
 
-<a id="function-actions-perform"></a>
-## `function actions.Perform(action)`
-(READ-ONLY) Performs a given [editor action](#class-editoraction), without changing the undo/redo stack. Note that this makes them not undoable, and is only useful for a specific scenario where you want to write data to a map that runs a separate updater function regardless of the history type.
+<a id="function-actions-performsilently"></a>
+## `function actions.PerformSilently(action)`
+(READ-ONLY) Performs a given [editor action](#class-editoraction), without pushing the action to the undo stack. This action cannot be undone by the user and, if desired, must be done through Lua.
 ### Parameters:
 - `action: EditorAction` - The [editor action](#class-editoraction) to perform.
 ### Returns:
 - `nil`
 
 
-<a id="function-actions-performbatch"></a>
-## `function actions.PerformBatch(actionList)`
-(READ-ONLY) Performs a given set of [editor actions](#class-editoraction), without changing the undo/redo stack. Note that this makes them not undoable, and is only useful for a specific scenario where you want to write data to a map that runs a separate updater function regardless of the history type.
+<a id="function-actions-performbatchsilently"></a>
+## `function actions.PerformBatchSilently(actionList)`
+(READ-ONLY) Performs a given set of [editor actions](#class-editoraction), without pushing the action to the undo stack. These actions cannot be undone by the user and, if desired, must be done through Lua.
 ### Parameters:
 - `actionList: EditorAction[]` - The [editor actions](#class-editoraction) to perform.
 ### Returns:
@@ -881,6 +890,24 @@
 - `nil`
 
 
+<a id="function-actions-startplayback"></a>
+## `function actions.StartPlayback()`
+(READ-ONLY) Starts playing the track.
+### Parameters:
+- None
+### Returns:
+- `nil`
+
+
+<a id="function-actions-stopplayback"></a>
+## `function actions.StopPlayback()`
+(READ-ONLY) Stops playing the track.
+### Parameters:
+- None
+### Returns:
+- `nil`
+
+
 <a id="function-actions-gotoobjects"></a>
 ## `function actions.GoToObjects(input)`
 (READ-ONLY) Moves the [`song time`](#attribute-state-songtime) to the designated objects.
@@ -961,6 +988,26 @@
 ### Parameters:
 - `layer: EditorLayer` - The [editor layer](#class-editorlayer) to move the [hit objects](#class-hitobject) to, which must be obtained via [`map.EditorLayers`](#attribute-map-editorlayers) or something similar.
 - `hos: HitObject[]` - The [hit objects](#class-hitobject) to move, which must be obtained via [`map.HitObjects`](#attribute-map-hitobjects) or something similar.
+### Returns:
+- `nil`
+
+
+<a id="function-actions-movelayer"></a>
+## `function actions.MoveLayer(layer, index)`
+(READ-ONLY) Moves the given [editor layer](#class-editorlayer) to a specific index (shown in the Editor Layer panel).
+### Parameters:
+- `layer: EditorLayer` - The [editor layer](#class-editorlayer) to move, which must be obtained via [`map.EditorLayers`](#attribute-map-editorlayers) or something similar.
+- `index: integer` - The new index of the [editor layer](#class-editorlayer).
+### Returns:
+- `nil`
+
+
+<a id="function-actions-movelayer"></a>
+## `function actions.MoveLayer(fromIndex, toIndex)`
+(READ-ONLY) Moves the [editor layer](#class-editorlayer) at the given index to another specific index (shown in the Editor Layer panel).
+### Parameters:
+- `fromIndex: integer` - The old index of the [editor layer](#class-editorlayer).
+- `toIndex: integer` - The new index of the [editor layer](#class-editorlayer).
 ### Returns:
 - `nil`
 
@@ -1121,6 +1168,13 @@
 (READ-ONLY) (EXISTS BEFORE RUNTIME)
  The current song time in milliseconds.
 
+<a id="attribute-state-isplaying"></a>
+## `attribute state.IsPlaying`
+
+### Type: `boolean`
+(READ-ONLY) (EXISTS BEFORE RUNTIME)
+ Returns true if the track is playing.
+
 <a id="attribute-state-selectedhitobjects"></a>
 ## `attribute state.SelectedHitObjects`
 
@@ -1236,6 +1290,15 @@ MUST BE SET MANUALLY - Indicates to the game that the window is hovered.
 - `fallback?: T` - An optional term to return, if the result is `nil`.
 ### Returns:
 - `T` - The stored value.
+
+
+<a id="function-state-closeplugin"></a>
+## `function state.ClosePlugin()`
+(READ-ONLY) (EXISTS BEFORE RUNTIME) Closes the plugin on the Quaver end. The only way to reopen it is to use the Plugins tab in the game itself.
+### Parameters:
+- None
+### Returns:
+- `nil`
 <a id="global-utils"></a>
 # global `utils`
 <a id="function-utils-createscrollvelocity"></a>
@@ -1606,6 +1669,15 @@ MUST BE SET MANUALLY - Indicates to the game that the window is hovered.
 - `time: number` - The time to start looking from, in milliseconds.
 ### Returns:
 - `number?` - The nearest time which follows the given snap.
+
+
+<a id="function-map-geteditorlayerindex"></a>
+## `function map.GetEditorLayerIndex(layer)`
+
+### Parameters:
+- `layer: EditorLayer` - 
+### Returns:
+- `integer` - 
 <a id="global-bit32"></a>
 # global `bit32`
 <a id="function-bit32-arshift"></a>
